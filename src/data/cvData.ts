@@ -5,7 +5,7 @@ export const cvData: CVData = {
   profile: {
     name: "Miguel Molina Montilla",
     title: "Engineering Manager / C# Team Lead",
-    summary: "Experienced Engineering Manager and Software Engineer with extensive expertise in full-stack development, cloud architecture (AWS/Azure), team leadership, and Site Reliability Engineering. Proven track record in leading international teams, migrating applications to cloud, and implementing CI/CD processes. Passionate about building scalable solutions, mentoring developers, and driving process improvements.",
+    summary: "Experienced Engineering Manager and Software Engineer with extensive expertise in full-stack development, cloud architecture (AWS/Azure), team leadership, and Site Reliability Engineering. Proven track record in leading international teams, migrating applications to cloud, and implementing CI/CD processes. Passionate about building scalable solutions, mentoring developers, and driving process improvements. Currently motivated by AI innovation, investing time in prompts engineering, custom instructions, and Model Context Protocols (MCPs) to simplify processes and automate workflows.",
     contact: {
       email: "miguel.molina.montilla@gmail.com",
       phone: "Available via email or LinkedIn DM",
@@ -30,10 +30,11 @@ export const cvData: CVData = {
         "Collaborated with Product Owners, Project Managers, and Product Designers for timely deliveries",
         "Led technical debt reduction initiatives",
         "Embedded AI capabilities across end-to-end payroll processes including Timesheets",
+        "Invested time in AI innovation: prompts engineering, custom instructions, and Model Context Protocols (MCPs) to simplify processes and automate workflows",
         "Supported multiple localizations' foundations",
         "Led performance reviews, defined OKRs, and managed improvement plans (PIPs)"
       ],
-      technologies: ["Angular 20", ".NET Core 9", "Azure DevOps", "AI Integration", "Cloud Migration", "Payroll Systems"]
+      technologies: ["Angular 20", ".NET Core 9", "Azure DevOps", "AI Integration", "Prompt Engineering", "MCPs", "Cloud Migration", "Payroll Systems"]
     },
     {
       id: "exp-2",
