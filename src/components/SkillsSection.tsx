@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Skill } from '../types/cv';
 
 interface SkillsSectionProps {
@@ -72,22 +71,26 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Top Skills Overview</h3>
           <div className="bg-gray-50 rounded-xl p-6">
-            <ResponsiveContainer width="100%" height={400}>
-              <BarChart data={chartData} layout="horizontal">
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" domain={[0, 100]} />
-                <YAxis dataKey="name" type="category" width={120} />
-                <Tooltip 
-                  formatter={(value: number) => [`${value}%`, 'Proficiency']}
-                  contentStyle={{ backgroundColor: 'white', border: '1px solid #e5e7eb', borderRadius: '8px' }}
-                />
-                <Bar dataKey="level" radius={[0, 8, 8, 0]}>
-                  {chartData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={getColorByLevel(entry.level)} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="space-y-3">
+              {chartData.map((skill, index) => (
+                <div key={skill.name} className="flex items-center gap-4">
+                  <div className="w-32 text-sm font-medium text-gray-700 text-right flex-shrink-0">
+                    {skill.name}
+                  </div>
+                  <div className="flex-1 bg-gray-200 rounded-full h-8 relative overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all duration-1000 ease-out flex items-center justify-end pr-3"
+                      style={{
+                        width: `${skill.level}%`,
+                        backgroundColor: getColorByLevel(skill.level)
+                      }}
+                    >
+                      <span className="text-white text-sm font-semibold">{skill.level}%</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

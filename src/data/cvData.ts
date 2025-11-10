@@ -18,12 +18,32 @@ export const cvData: CVData = {
     {
       id: "exp-1",
       company: "Sage",
-      position: "Engineering Manager / C# Team/People Lead Engineer",
-      location: "Barcelona, Cataluña, España",
-      startDate: "2022-05",
+      position: "Engineering Team Lead Payroll ESP",
+      location: "Barcelona, Cataluña, España (Híbrido)",
+      startDate: "2024-11",
       endDate: "2025-11",
       current: true,
-      description: "Managing DBA, QA, and DEV team capabilities focusing on professional growth, process improvements, and site reliability engineering with continuous monitoring.",
+      description: "Team Lead managing multidisciplinary team of 11 (developers, QA, BAs), driving cloud payroll product transition. Leading technical debt reduction and AI capabilities integration across end-to-end payroll processes including Timesheets.",
+      achievements: [
+        "Managed team of 11 professionals (developers, QA, BAs) for critical cloud payroll product",
+        "Drove cloud migration and payroll system modernization",
+        "Collaborated with Product Owners, Project Managers, and Product Designers for timely deliveries",
+        "Led technical debt reduction initiatives",
+        "Embedded AI capabilities across end-to-end payroll processes including Timesheets",
+        "Supported multiple localizations' foundations",
+        "Led performance reviews, defined OKRs, and managed improvement plans (PIPs)"
+      ],
+      technologies: ["Angular 20", ".NET Core 9", "Azure DevOps", "AI Integration", "Cloud Migration", "Payroll Systems"]
+    },
+    {
+      id: "exp-2",
+      company: "Sage",
+      position: "C# Engineering/Site Reliability Team Lead Accounting South Africa",
+      location: "Barcelona, Cataluña, España",
+      startDate: "2022-05",
+      endDate: "2024-11",
+      current: false,
+      description: "Engineering Manager managing delivery of DBA, QA, and DEV team capabilities focusing on professional growth, process improvements, and site reliability engineering with continuous monitoring.",
       achievements: [
         "Managed international team of DBA, QA, and DEV specialists focusing on professional development",
         "Implemented process improvements and conducted performance reviews",
@@ -34,10 +54,10 @@ export const cvData: CVData = {
       technologies: ["C#", ".NET Framework", "AWS", "New Relic", "Microservices", "ASP.NET Web API", "DevOps", "Site Reliability Engineering", "Scrumban", "Quality Assurance"]
     },
     {
-      id: "exp-2",
+      id: "exp-3",
       company: "Sage",
       position: "Senior Software Engineer – Team Leader",
-      location: "Barcelona, Cataluña, España",
+      location: "Barcelona, Cataluña, España (Remoto)",
       startDate: "2021-05",
       endDate: "2022-04",
       current: false,
@@ -52,7 +72,44 @@ export const cvData: CVData = {
       technologies: ["C#", ".NET", "AWS", "IIS", "Microservices", "Windows Services", "CI/CD", "DevOps", "Unit Testing", "Continuous Integration"]
     },
     {
-      id: "exp-3",
+      id: "exp-4",
+      company: "CholloLocura",
+      position: "Company Owner",
+      location: "Granollers, España",
+      startDate: "2018-11",
+      endDate: "2025-11",
+      current: true,
+      description: "Company Owner at www.cholloLocura.es, responsible for cloud development on Azure, marketing management, and other business functions.",
+      achievements: [
+        "Founded and managed e-commerce deals platform",
+        "Developed cloud infrastructure on Microsoft Azure",
+        "Managed marketing and business operations",
+        "Built microservices architecture for scalability"
+      ],
+      technologies: ["Microsoft Azure", "Cloud Computing", "Microservices", "Front-end Development", "CI/CD", "Unit Testing"]
+    },
+    {
+      id: "exp-5",
+      company: "ERNI",
+      position: "Senior Developer",
+      location: "Barcelona, España",
+      startDate: "2014-02",
+      endDate: "2021-05",
+      current: false,
+      description: "Senior developer and Scrum Master leading team of ~5 people, working on multiple projects including access control systems, Xamarin mobile apps, Angular applications, and load testing on Kubernetes.",
+      achievements: [
+        "Led team as Scrum Master organizing dailies, planning, reviews, and retrospectives",
+        "Managed direct communication with Product Owners for scope and task decisions",
+        "Developed access control web management application for Swiss customer",
+        "Architected Xamarin cross-platform app for international Healthcare company",
+        "Implemented continuous integration on App Center",
+        "Conducted load tests on Kubernetes with kube-monkey, heapster, grafana, influx-db",
+        "Communicated fluently in English with international teams"
+      ],
+      technologies: ["C#", "ASP.NET MVC 5", "KendoUI", "KnockoutJS", "TypeScript", "SignalR", "Angular 5", "Node.js", "NFC", "Mifare Classic 4K", "Xamarin", "Caliburn.Micro", "RestSharp", "Kubernetes", "Git", "TFS", "Azure DevOps"]
+    },
+    {
+      id: "exp-6",
       company: "ERNI",
       position: "Fullstack Developer - UI Kiit LabCore UI Phase",
       location: "Barcelona, España",
@@ -69,9 +126,9 @@ export const cvData: CVData = {
       technologies: ["Angular 9", ".NET Core 3", "SignalR", "Microservices", "RxJS", "Jasmine", "Karma", "Azure DevOps", "Unit Testing"]
     },
     {
-      id: "exp-4",
+      id: "exp-7",
       company: "ERNI",
-      position: "Senior Angular Frontend - CIM",
+      position: "Senior Angular 6 Frontend - CIM",
       location: "Barcelona, España",
       startDate: "2019-03",
       endDate: "2019-12",
@@ -86,7 +143,7 @@ export const cvData: CVData = {
       technologies: ["Angular 6", "C#", ".NET Core 2.2", "MongoDB", "IdentityServer", "Docker", "OAuth", "OpenID", "RabbitMQ", "Karma", "SonarQube", "Postman"]
     },
     {
-      id: "exp-5",
+      id: "exp-8",
       company: "ERNI",
       position: "Senior Developer - HIV Monitor",
       location: "Barcelona, España",
@@ -104,7 +161,7 @@ export const cvData: CVData = {
       technologies: ["Xamarin Forms", ".NET Core 2", "IdentityServer", "Azure", "Android", "iOS", "Microservices", "AppCenter"]
     },
     {
-      id: "exp-6",
+      id: "exp-9",
       company: "ERNI",
       position: "Senior Developer - Smart Water System",
       location: "Barcelona, España",
@@ -121,7 +178,7 @@ export const cvData: CVData = {
       technologies: ["Angular 4", "Node.js", "MongoDB", "Express.js", "Auth0", "D3.js", "Bootstrap", "Mongoose"]
     },
     {
-      id: "exp-7",
+      id: "exp-10",
       company: "ERNI",
       position: "Senior Developer - Smart Documents APP",
       location: "Barcelona, España",
@@ -138,7 +195,7 @@ export const cvData: CVData = {
       technologies: ["Angular 4", "NFC", "MIFARE DESFire", "Bootstrap 4", "PrimeNG", "C#", "FeigReader SDK"]
     },
     {
-      id: "exp-8",
+      id: "exp-11",
       company: "ERNI",
       position: "Professional MVC-HTML-5 Developer - Security System",
       location: "Barcelona, España",
@@ -156,7 +213,7 @@ export const cvData: CVData = {
       technologies: ["ASP.NET MVC", "TypeScript", "KendoUI", "SignalR", "KnockoutJS", "HTML5", "C#", "SQL Server"]
     },
     {
-      id: "exp-9",
+      id: "exp-12",
       company: "ERNI",
       position: "Professional Developer - Meeting Scheduling System",
       location: "Barcelona, España",
@@ -174,8 +231,25 @@ export const cvData: CVData = {
       technologies: ["ASP.NET MVC", "Web API", "Exchange Web Services", "MS SQL Server 2012", "Windows Services", "Outlook Add-Ins", "LightInject", "Quartz.Net", "Office Interop"]
     },
     {
-      id: "exp-10",
-      company: "ERNI",
+      id: "exp-13",
+      company: "Raona",
+      position: "Software Engineer",
+      location: "Barcelona, España",
+      startDate: "2012-02",
+      endDate: "2014-02",
+      current: false,
+      description: "Software engineer developing Silverlight, WPF, and C# solutions for clients like Carburos Metálicos and Linde. Extensive database management and SQL Server 2008.",
+      achievements: [
+        "Developed Silverlight and WPF applications",
+        "Extensive SQL Server 2008 database management",
+        "Worked with Team Foundation Server",
+        "Delivered solutions for industrial sector clients"
+      ],
+      technologies: ["Silverlight 4.0", "WPF", "C#", "MS SQL Server 2008", "MS Visual Studio 2012", "TFS", ".NET Framework"]
+    },
+    {
+      id: "exp-14",
+      company: "Raona",
       position: "Senior ASP.NET MVC Developer - Airline Company",
       location: "Barcelona, España",
       startDate: "2013-11",
@@ -190,8 +264,8 @@ export const cvData: CVData = {
       technologies: ["ASP.NET MVC 3", "C#", "Telerik", "SOLID", "IoC"]
     },
     {
-      id: "exp-11",
-      company: "ERNI",
+      id: "exp-15",
+      company: "Raona",
       position: "Junior WPF Developer - Healthcare",
       location: "Barcelona, España",
       startDate: "2013-05",
@@ -206,40 +280,120 @@ export const cvData: CVData = {
       technologies: ["WPF", "C#", "Telerik", "MS SQL Server 2008", "MS Visual Studio 2012", "TFS"]
     },
     {
-      id: "exp-12",
-      company: "Private/Freelance",
-      position: "Android Developer",
+      id: "exp-16",
+      company: "Videogame2all",
+      position: "Software Developer - Windows Phone 8",
       location: "Barcelona, España",
-      startDate: "2013-05",
-      endDate: "2013-05",
+      startDate: "2013-11",
+      endDate: "2013-11",
       current: false,
-      description: "Private Android app development with Facebook integration, SQLite database, and Google Play Services. Published multiple apps on Google Play Store.",
+      description: "Freelance Windows Phone 8 app development, converting existing Android app to Windows Phone platform.",
       achievements: [
-        "Published 3 apps on Google Play Store",
+        "Converted Android app to Windows Phone 8",
+        "Published app on Windows Phone Store",
+        "Independent development and deployment"
+      ],
+      technologies: ["Windows Phone 8", "C#", ".NET Framework"]
+    },
+    {
+      id: "exp-17",
+      company: "films2all",
+      position: "Android Developer (Freelance)",
+      location: "Barcelona, España",
+      startDate: "2013-07",
+      endDate: "2013-07",
+      current: false,
+      description: "Freelance Android app development integrating Google Play Services, Facebook, databases, and UX design. Published on Google Play Store.",
+      achievements: [
+        "Developed and published films2all app on Google Play Store",
+        "Integrated Facebook API and Google Play Services",
+        "Implemented SQLite database management",
+        "Created both standard and lite versions"
+      ],
+      technologies: ["Android", "Android SDK", "SQL-Lite", "Facebook API", "Google Play Services"]
+    },
+    {
+      id: "exp-18",
+      company: "Videogame2all",
+      position: "Android Developer (Freelance)",
+      location: "Barcelona, España",
+      startDate: "2013-04",
+      endDate: "2013-04",
+      current: false,
+      description: "Freelance Android app development integrating Google Play Services, Facebook, databases, and UX design. Published on Google Play Store.",
+      achievements: [
+        "Developed and published Videogame2all app on Google Play Store",
+        "Created both free and pro versions",
         "Integrated Facebook API and Google Play Services",
         "Implemented SQLite database management"
       ],
       technologies: ["Android", "Android SDK", "SQL-Lite", "Facebook API", "Google Play Services"]
     },
     {
-      id: "exp-13",
-      company: "ERNI",
-      position: "Junior Silverlight Developer - Healthcare",
+      id: "exp-19",
+      company: "Universitat Autònoma de Barcelona",
+      position: "Software Engineer",
       location: "Barcelona, España",
-      startDate: "2012-02",
-      endDate: "2013-05",
+      startDate: "2009-09",
+      endDate: "2012-02",
       current: false,
-      description: "Silverlight application development for healthcare-related project.",
+      description: "Web application development using Java technologies, HTML5, JavaScript, CSS, and jQuery.",
       achievements: [
-        "Developed Silverlight 4.0 application features",
-        "Worked on healthcare-related software for over a year"
+        "Developed web applications for university projects",
+        "Worked with Java, HTML5, JavaScript, CSS, jQuery",
+        "Built front-end and back-end solutions"
       ],
-      technologies: ["Silverlight 4.0", "MS SQL Server", "MS Visual Studio 2012", "C#"]
+      technologies: ["Java", "HTML5", "JavaScript", "CSS", "jQuery"]
+    },
+    {
+      id: "exp-20",
+      company: "SEVIBE CELLS",
+      position: "IT Manager",
+      location: "Barcelona, España",
+      startDate: "2008-12",
+      endDate: "2009-09",
+      current: false,
+      description: "Managed IT team of 20 people, coordinated IT projects, ensured user support and internal policy compliance. Administered servers and network infrastructure.",
+      achievements: [
+        "Managed IT team of 20 people",
+        "Coordinated IT area projects",
+        "Administered Windows servers and network infrastructure",
+        "Maintained IT security (Fortigate, VPN)",
+        "Managed resource allocation and user provisioning",
+        "Maintained technical documentation of information systems"
+      ],
+      technologies: ["Windows Server", "Fortigate", "VPN", "Network Infrastructure"]
+    },
+    {
+      id: "exp-21",
+      company: "UNIT4 Agresso ES",
+      position: "Software Engineer",
+      location: "Barcelona, España",
+      startDate: "2007-11",
+      endDate: "2008-07",
+      current: false,
+      description: "Developed final degree project using company's proprietary framework (Karat) in VB6 and Java.",
+      achievements: [
+        "Developed solutions using Karat framework",
+        "Worked with VB6 and Java",
+        "Completed final degree project"
+      ],
+      technologies: ["VB6", "Java", "Karat Framework"]
     }
   ],
   education: [
     {
       id: "edu-1",
+      institution: "Universitat Autònoma de Barcelona",
+      degree: "Ingeniería Técnica en Informática de Gestión",
+      field: "Informatics",
+      location: "Barcelona, España",
+      startDate: "2005-09",
+      endDate: "2009-06",
+      description: "Technical Engineering degree in Computer Science specialized in Management Information Systems"
+    },
+    {
+      id: "edu-2",
       institution: "Microsoft",
       degree: "Microsoft Certification",
       field: "70-513 Windows Communication Foundation Development with .NET Framework 4",
@@ -249,7 +403,7 @@ export const cvData: CVData = {
       description: "Microsoft certified in Windows Communication Foundation development"
     },
     {
-      id: "edu-2",
+      id: "edu-3",
       institution: "Microsoft",
       degree: "Microsoft Certification",
       field: "70-461 Querying Microsoft SQL Server 2012",
@@ -259,7 +413,7 @@ export const cvData: CVData = {
       description: "Microsoft certified in SQL Server 2012 querying"
     },
     {
-      id: "edu-3",
+      id: "edu-4",
       institution: "Microsoft",
       degree: "Microsoft Certification",
       field: "70-511 Windows Applications Development with .NET Framework 4",
@@ -269,7 +423,7 @@ export const cvData: CVData = {
       description: "Microsoft certified in Windows applications development"
     },
     {
-      id: "edu-4",
+      id: "edu-5",
       institution: "Microsoft",
       degree: "Microsoft Certification",
       field: "70-632 Microsoft Office Project 2007, Managing Projects",
@@ -279,7 +433,7 @@ export const cvData: CVData = {
       description: "Microsoft certified in project management with MS Project"
     },
     {
-      id: "edu-5",
+      id: "edu-6",
       institution: "Microsoft",
       degree: "Microsoft Certification",
       field: "AI-900: Microsoft Certified Azure AI Fundamentals",
@@ -467,30 +621,36 @@ export const cvData: CVData = {
   certifications: [
     {
       id: "cert-1",
-      name: "AI-900: Microsoft Certified Azure AI Fundamentals",
+      name: "Microsoft Certified: Azure AI Fundamentals",
       issuer: "Microsoft",
-      date: "2023-01"
+      date: "2023-05"
     },
     {
       id: "cert-2",
+      name: "Microsoft Certified: Azure Fundamentals",
+      issuer: "Microsoft",
+      date: "2021-04"
+    },
+    {
+      id: "cert-3",
       name: "70-513 Windows Communication Foundation Development with Microsoft .NET Framework 4",
       issuer: "Microsoft",
       date: "2014-01"
     },
     {
-      id: "cert-3",
+      id: "cert-4",
       name: "70-461 Querying Microsoft SQL Server 2012",
       issuer: "Microsoft",
       date: "2013-01"
     },
     {
-      id: "cert-4",
+      id: "cert-5",
       name: "70-511 Windows Applications Development with Microsoft .NET Framework 4",
       issuer: "Microsoft",
       date: "2013-01"
     },
     {
-      id: "cert-5",
+      id: "cert-6",
       name: "70-632 Microsoft Office Project 2007, Managing Projects",
       issuer: "Microsoft",
       date: "2013-01"
