@@ -56,7 +56,7 @@ export const cvData: CVData = {
     {
       id: "exp-3",
       company: "Sage",
-      position: "Senior Software Engineer – Team Leader",
+      position: "Senior Software Engineer",
       location: "Barcelona, Cataluña, España (Remoto)",
       startDate: "2021-05",
       endDate: "2022-04",
@@ -398,8 +398,8 @@ export const cvData: CVData = {
       degree: "Microsoft Certification",
       field: "70-513 Windows Communication Foundation Development with .NET Framework 4",
       location: "Online",
-      startDate: "2014-01",
-      endDate: "2014-12",
+      startDate: "2012-12",
+      endDate: "2012-12",
       description: "Microsoft certified in Windows Communication Foundation development"
     },
     {
@@ -408,8 +408,8 @@ export const cvData: CVData = {
       degree: "Microsoft Certification",
       field: "70-461 Querying Microsoft SQL Server 2012",
       location: "Online",
-      startDate: "2013-01",
-      endDate: "2013-12",
+      startDate: "2013-03",
+      endDate: "2013-03",
       description: "Microsoft certified in SQL Server 2012 querying"
     },
     {
@@ -429,7 +429,7 @@ export const cvData: CVData = {
       field: "70-632 Microsoft Office Project 2007, Managing Projects",
       location: "Online",
       startDate: "2013-01",
-      endDate: "2013-12",
+      endDate: "2013-01",
       description: "Microsoft certified in project management with MS Project"
     },
     {
@@ -449,11 +449,13 @@ export const cvData: CVData = {
     { name: "TypeScript", category: "Programming Languages", level: 90 },
     { name: "JavaScript", category: "Programming Languages", level: 90 },
     { name: "SQL", category: "Programming Languages", level: 90 },
+    { name: "Python", category: "Programming Languages", level: 30 },
+    { name: "PowerShell", category: "Programming Languages", level: 90 },
     
     // Frameworks & Libraries
     { name: ".NET Core", category: "Frameworks", level: 95 },
     { name: ".NET Framework", category: "Frameworks", level: 95 },
-    { name: "Angular", category: "Frameworks", level: 92 },
+    { name: "Angular", category: "Frameworks", level: 60 },
     { name: "ASP.NET MVC", category: "Frameworks", level: 93 },
     { name: "ASP.NET Web API", category: "Frameworks", level: 92 },
     { name: "SignalR", category: "Frameworks", level: 85 },
@@ -467,7 +469,8 @@ export const cvData: CVData = {
     // Cloud & DevOps
     { name: "AWS", category: "Cloud & DevOps", level: 90 },
     { name: "Azure", category: "Cloud & DevOps", level: 88 },
-    { name: "Docker", category: "Cloud & DevOps", level: 85 },
+    { name: "Docker", category: "Cloud & DevOps", level: 90 },
+    { name: "Kubernetes", category: "Cloud & DevOps", level: 70 },
     { name: "CI/CD", category: "Cloud & DevOps", level: 90 },
     { name: "DevOps", category: "Cloud & DevOps", level: 88 },
     { name: "Azure DevOps", category: "Cloud & DevOps", level: 87 },
@@ -504,11 +507,11 @@ export const cvData: CVData = {
     { name: "PrimeNG", category: "Tools", level: 78 },
     
     // Methodologies
-    { name: "Scrum", category: "Methodologies", level: 90 },
-    { name: "Scrumban", category: "Methodologies", level: 88 },
-    { name: "Agile", category: "Methodologies", level: 90 },
-    { name: "Team Management", category: "Methodologies", level: 92 },
-    { name: "Requirements Analysis", category: "Methodologies", level: 88 }
+    { name: "Scrum", category: "Methodologies", level: 100 },
+    { name: "Scrumban", category: "Methodologies", level: 100 },
+    { name: "Agile", category: "Methodologies", level: 100 },
+    { name: "Team Management", category: "Methodologies", level: 100 },
+    { name: "Requirements Analysis", category: "Methodologies", level: 100 }
   ],
   projects: [
     {
@@ -623,35 +626,37 @@ export const cvData: CVData = {
       id: "cert-1",
       name: "Microsoft Certified: Azure AI Fundamentals",
       issuer: "Microsoft",
-      date: "2023-05"
+      date: "2023-05",
+      link: "https://www.credly.com/badges/5454317b-73c6-4bcf-b8f5-24b80284069d"
     },
     {
       id: "cert-2",
       name: "Microsoft Certified: Azure Fundamentals",
       issuer: "Microsoft",
-      date: "2021-04"
+      date: "2021-04",
+      link: "https://www.credly.com/badges/cae0f74c-450c-4402-8e7a-61b77f0fe3e7"
     },
     {
       id: "cert-3",
-      name: "70-513 Windows Communication Foundation Development with Microsoft .NET Framework 4",
+      name: "70-461 Querying Microsoft SQL Server 2012",
       issuer: "Microsoft",
-      date: "2014-01"
+      date: "2013-03"
     },
     {
       id: "cert-4",
-      name: "70-461 Querying Microsoft SQL Server 2012",
+      name: "70-632 Microsoft Office Project 2007, Managing Projects",
       issuer: "Microsoft",
       date: "2013-01"
     },
     {
       id: "cert-5",
-      name: "70-511 Windows Applications Development with Microsoft .NET Framework 4",
+      name: "70-513 Windows Communication Foundation Development with Microsoft .NET Framework 4",
       issuer: "Microsoft",
-      date: "2013-01"
+      date: "2012-12"
     },
     {
       id: "cert-6",
-      name: "70-632 Microsoft Office Project 2007, Managing Projects",
+      name: "70-511 Windows Applications Development with Microsoft .NET Framework 4",
       issuer: "Microsoft",
       date: "2013-01"
     }
