@@ -72,7 +72,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Top Skills Overview</h3>
           <div className="bg-gray-50 rounded-xl p-6">
             <div className="space-y-3">
-              {chartData.map((skill, index) => (
+              {chartData.map((skill) => (
                 <div key={skill.name} className="flex items-center gap-4">
                   <div className="w-32 text-sm font-medium text-gray-700 text-right flex-shrink-0">
                     {skill.name}
