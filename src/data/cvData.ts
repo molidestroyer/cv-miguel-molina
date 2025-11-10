@@ -7,10 +7,10 @@ export const cvData: CVData = {
     title: "Engineering Manager / C# Team Lead",
     summary: "Experienced Engineering Manager and Software Engineer with extensive expertise in full-stack development, cloud architecture (AWS/Azure), team leadership, and Site Reliability Engineering. Proven track record in leading international teams, migrating applications to cloud, and implementing CI/CD processes. Passionate about building scalable solutions, mentoring developers, and driving process improvements.",
     contact: {
-      email: "miguel.molina@example.com",
-      phone: "+34 XXX XXX XXX",
-      location: "Barcelona, Cataluña, España",
-      linkedin: "linkedin.com/in/miguelmolina",
+      email: "miguel.molina.montilla@gmail.com",
+      phone: "Available via email or LinkedIn DM",
+      location: "Canovelles, Barcelona",
+      linkedin: "linkedin.com/in/miguel-molina-montilla-792441a",
       github: "github.com/molidestroyer",
     }
   },

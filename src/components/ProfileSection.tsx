@@ -15,8 +15,21 @@ export default function ProfileSection({ name, title, summary, contact }: Profil
         <div className="text-center">
           {/* Avatar */}
           <div className="mb-8 flex justify-center">
-            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-5xl font-bold shadow-2xl">
-              {name.split(' ').map(n => n[0]).join('')}
+            <div className="w-40 h-40 rounded-full overflow-hidden shadow-2xl border-4 border-white">
+              <img 
+                src="/cv-miguel-molina/profile.jpg" 
+                alt={name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback to initials if image fails to load
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  if (target.parentElement) {
+                    target.parentElement.className = 'w-40 h-40 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-5xl font-bold shadow-2xl';
+                    target.parentElement.textContent = name.split(' ').map(n => n[0]).join('');
+                  }
+                }}
+              />
             </div>
           </div>
 
