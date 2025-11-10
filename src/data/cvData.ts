@@ -52,7 +52,14 @@ export const cvData: CVData = {
         "Led international remote team of 5 senior developers, 2 QA specialists, and 1 DBA",
         "Designed and executed a minimal-downtime partitioning plan for a critical ~4 billion-row database table — successfully partitioned and migrated hot data with automated cutover in under 12 hours, including validation scripts, rollback strategy, and post-cutover performance tuning (reduced contention and improved query latency)",
         "Improved company engagement with values and culture",
-        "Ensured seamless user experience supporting 150,000 requests per minute (rpm)"
+        "Ensured seamless user experience supporting 150,000 requests per minute (rpm)",
+        // Consolidated review bullets (2022–2024)
+        "Assumed formal leadership responsibilities and acted as interim Team Lead; guided the team technically, set priorities, conducted interviews, and addressed performance issues",
+        "Improved build and release pipelines and played a key role in the migration to AWS; refactored large parts of the application to adopt Dependency Injection",
+        "Developed leadership skills while maintaining technical ownership; resolved critical stability issues that increased application stability and reduced hosting costs",
+        "Balanced management and hands-on engineering: advanced complex technical initiatives while improving team communication, focus, and coordination with other managers to address QA resource constraints",
+        "Delivered automation and stability initiatives including DB script generation, DB server deployment automation, API gateway work, and dockerization/stabilization of background services",
+        "Planned and executed production-ready partitioning work with robust validation and rollback measures"
       ],
       technologies: ["C#", ".NET Framework", "AWS", "New Relic", "Microservices", "ASP.NET Web API", "DevOps", "Site Reliability Engineering", "Scrumban", "Quality Assurance"]
     },
@@ -68,6 +75,11 @@ export const cvData: CVData = {
       achievements: [
         "Spearheaded full migration of several applications to AWS cloud (IIS based, microservices, windows services)",
         "Moved all sites and workers from on-premise to AWS, automated pipelines (CI/CD), managed EC2 deployment and load balancing including peak-hour scaling and all necessary reliability configurations",
+        "Successfully onboarded and trained on AWS, taking ownership of multiple new features and demonstrating strong cloud operational skills",
+        "Integrated effectively with a geographically distributed team and proactively proposed product improvements with tech leads",
+        // Consolidated 2021 bullets
+        "Quickly integrated into the team and introduced stateless solutions to improve scalability and simplify deployments",
+        "Actively contributed to the AWS migration effort, delivering key features and operational improvements under tight timelines",
         "Revitalized application reliability after critical 3-week downtime event",
         "Collaborated on application improvements to support 150,000 requests per minute",
         "Established CI/CD processes and maximized automation for operational efficiency"
