@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import Navbar from './components/Navbar';
 import ProfileSection from './components/ProfileSection';
 import ExperienceSection from './components/ExperienceSection';
+import RecommendationsSection from './components/RecommendationsSection';
 import EducationSection from './components/EducationSection';
 import SkillsSection from './components/SkillsSection';
 import ProjectsSection from './components/ProjectsSection';
@@ -49,20 +50,36 @@ function App() {
     };
   }, [searchQuery]);
 
+  const heroStats = useMemo(() => {
+    const startYears = cvData.experience.map((exp) => parseInt(exp.startDate.split('-')[0], 10));
+    const yearsExperience = new Date().getFullYear() - Math.min(...startYears);
+    const companies = new Set(cvData.experience.map((exp) => exp.company)).size;
+
+    return [
+      { label: 'Years Experience', value: `${yearsExperience}+` },
+      { label: 'Companies', value: `${companies}` },
+      { label: 'Projects Delivered', value: `${cvData.projects.length}+` },
+      { label: 'Core Skills', value: `${cvData.skills.length}+` },
+    ];
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-ink-950">
       <Navbar onSearch={setSearchQuery} />
-      
+
       <ProfileSection
         name={cvData.profile.name}
         title={cvData.profile.title}
         summary={cvData.profile.summary}
         contact={cvData.profile.contact}
+        stats={heroStats}
       />
 
       {filteredData.experience.length > 0 && (
         <ExperienceSection experiences={filteredData.experience} />
       )}
+
+      {!searchQuery.trim() && <RecommendationsSection recommendations={cvData.recommendations} />}
 
       {filteredData.education.length > 0 && (
         <EducationSection education={filteredData.education} />
@@ -82,10 +99,10 @@ function App() {
       />
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
+      <footer className="bg-ink-950 border-t border-white/10 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-400">
-            © {new Date().getFullYear()} {cvData.profile.name}. Built with React, TypeScript, and Tailwind CSS.
+          <p className="text-slate-500 text-sm">
+            © {new Date().getFullYear()} {cvData.profile.name}. Built with React, TypeScript, Tailwind CSS &amp; Framer Motion.
           </p>
         </div>
       </footer>

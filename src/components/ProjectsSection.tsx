@@ -1,5 +1,6 @@
 import { FolderGit2, ExternalLink } from 'lucide-react';
 import { Project } from '../types/cv';
+import Reveal from './Reveal';
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -13,72 +14,71 @@ const formatDate = (dateString: string) => {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="py-20 bg-gray-50">
+    <section id="projects" className="relative py-24 bg-ink-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-          <p className="text-lg text-gray-600">Notable projects and technical achievements</p>
-        </div>
+        <Reveal className="text-center mb-16">
+          <span className="section-eyebrow">Case studies</span>
+          <h2 className="section-title">Featured Projects</h2>
+          <p className="text-lg text-slate-400">Notable projects and technical achievements</p>
+        </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-200"
-            >
-              {/* Header */}
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary-100 rounded-lg">
-                    <FolderGit2 className="text-primary-600" size={24} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {projects.map((project, i) => (
+            <Reveal key={project.id} delay={Math.min(i, 5) * 0.06}>
+              <div className="group relative glass-card p-6 h-full hover:border-primary-400/40 hover:shadow-glow-accent transition-all duration-300 overflow-hidden">
+                <div className="absolute -top-16 -right-16 w-40 h-40 bg-accent-500/10 rounded-full blur-3xl group-hover:bg-accent-500/20 transition-all" />
+                <div className="relative flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-lg bg-primary-500/10 text-primary-300">
+                      <FolderGit2 size={22} />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-display font-bold text-white">{project.name}</h3>
+                      <p className="text-xs text-slate-500">{formatDate(project.date)}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{project.name}</h3>
-                    <p className="text-sm text-gray-600">{formatDate(project.date)}</p>
-                  </div>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-primary-300 hover:bg-white/10 rounded-lg transition-colors"
+                    >
+                      <ExternalLink size={18} />
+                    </a>
+                  )}
                 </div>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
+
+                <p className="relative text-slate-300 mb-4 text-sm">{project.description}</p>
+
+                {project.highlights.length > 0 && (
+                  <div className="relative mb-4">
+                    <h4 className="font-semibold text-white mb-2 text-xs uppercase tracking-wide text-slate-400">
+                      Key Highlights
+                    </h4>
+                    <ul className="space-y-1.5">
+                      {project.highlights.map((highlight, hi) => (
+                        <li key={hi} className="text-sm text-slate-300 flex items-start">
+                          <span className="text-accent-400 mr-2 mt-0.5">▸</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
-              </div>
 
-              {/* Description */}
-              <p className="text-gray-700 mb-4">{project.description}</p>
-
-              {/* Highlights */}
-              {project.highlights.length > 0 && (
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">Key Highlights:</h4>
-                  <ul className="space-y-1">
-                    {project.highlights.map((highlight, i) => (
-                      <li key={i} className="text-sm text-gray-700 flex items-start">
-                        <span className="text-primary-600 mr-2">•</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="relative flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-white/5 border border-white/10 text-slate-300 rounded-full text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-              )}
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

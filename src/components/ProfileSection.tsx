@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Linkedin, Github, ArrowDown } from 'lucide-react';
 import { ContactInfo } from '../types/cv';
 
 interface ProfileSectionProps {
@@ -6,78 +7,137 @@ interface ProfileSectionProps {
   title: string;
   summary: string;
   contact: ContactInfo;
+  stats: { label: string; value: string }[];
 }
 
-export default function ProfileSection({ name, title, summary, contact }: ProfileSectionProps) {
+export default function ProfileSection({ name, title, summary, contact, stats }: ProfileSectionProps) {
   return (
-    <section id="profile" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-blue-50 pt-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section
+      id="profile"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-ink-950"
+    >
+      {/* Background layers */}
+      <div className="absolute inset-0 bg-grid-glow" />
+      <div className="absolute inset-0 [background-image:linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_30%,black,transparent)]" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-500/30 rounded-full blur-3xl animate-blob" />
+      <div className="absolute top-1/3 -right-24 w-96 h-96 bg-accent-500/25 rounded-full blur-3xl animate-blob" style={{ animationDelay: '3s' }} />
+      <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-sky-400/20 rounded-full blur-3xl animate-blob" style={{ animationDelay: '6s' }} />
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
           {/* Avatar */}
-          <div className="mb-8 flex justify-center">
-            <div className="w-40 h-40 rounded-full overflow-hidden shadow-2xl border-4 border-white">
-              <img 
-                src="/cv-miguel-molina/profile.jpg" 
-                alt={name}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  // Fallback to initials if image fails to load
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  if (target.parentElement) {
-                    target.parentElement.className = 'w-40 h-40 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-5xl font-bold shadow-2xl';
-                    target.parentElement.textContent = name.split(' ').map(n => n[0]).join('');
-                  }
-                }}
-              />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-8 flex justify-center"
+          >
+            <div className="relative animate-float">
+              <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-primary-400 via-sky-300 to-accent-500 blur-md opacity-70" />
+              <div className="relative w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden shadow-2xl border-4 border-ink-950">
+                <img
+                  src="/cv-miguel-molina/profile.jpg"
+                  alt={name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    if (target.parentElement) {
+                      target.parentElement.className =
+                        'relative w-36 h-36 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-primary-500 to-accent-600 flex items-center justify-center text-white text-5xl font-display font-bold shadow-2xl border-4 border-ink-950';
+                      target.parentElement.textContent = name.split(' ').map((n) => n[0]).join('');
+                    }
+                  }}
+                />
+              </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Name and Title */}
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-7xl font-display font-extrabold gradient-text mb-4 tracking-tight"
+          >
             {name}
-          </h1>
-          <p className="text-2xl md:text-3xl text-primary-600 font-semibold mb-6">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xl md:text-2xl text-slate-200 font-semibold mb-6"
+          >
             {title}
-          </p>
+          </motion.p>
 
           {/* Summary */}
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="text-base md:text-lg text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+          >
             {summary}
-          </p>
+          </motion.p>
+
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10"
+          >
+            {stats.map((stat) => (
+              <div key={stat.label} className="glass-card px-6 py-4 min-w-[120px]">
+                <div className="text-2xl md:text-3xl font-display font-bold gradient-text">{stat.value}</div>
+                <div className="text-xs text-slate-400 uppercase tracking-wide mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
 
           {/* Contact Information */}
-          <div className="flex flex-wrap justify-center gap-6 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-wrap justify-center gap-6 mb-8"
+          >
             <a
               href={`mailto:${contact.email}`}
-              className="flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-colors"
+              className="flex items-center gap-2 text-slate-300 hover:text-primary-300 transition-colors"
             >
-              <Mail size={20} />
-              <span>{contact.email}</span>
+              <Mail size={18} />
+              <span className="text-sm">{contact.email}</span>
             </a>
             <a
               href={`tel:${contact.phone}`}
-              className="flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-colors"
+              className="flex items-center gap-2 text-slate-300 hover:text-primary-300 transition-colors"
             >
-              <Phone size={20} />
-              <span>{contact.phone}</span>
+              <Phone size={18} />
+              <span className="text-sm">{contact.phone}</span>
             </a>
-            <div className="flex items-center gap-2 text-gray-700">
-              <MapPin size={20} />
-              <span>{contact.location}</span>
+            <div className="flex items-center gap-2 text-slate-300">
+              <MapPin size={18} />
+              <span className="text-sm">{contact.location}</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="flex justify-center gap-4"
+          >
             {contact.linkedin && (
               <a
                 href={`https://${contact.linkedin}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-primary-100 text-primary-600 hover:bg-primary-600 hover:text-white transition-all shadow-md hover:shadow-lg"
+                className="p-3 rounded-full glass-card text-primary-300 hover:text-white hover:shadow-glow hover:border-primary-400/50 transition-all"
               >
-                <Linkedin size={24} />
+                <Linkedin size={22} />
               </a>
             )}
             {contact.github && (
@@ -85,12 +145,21 @@ export default function ProfileSection({ name, title, summary, contact }: Profil
                 href={`https://${contact.github}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-primary-100 text-primary-600 hover:bg-primary-600 hover:text-white transition-all shadow-md hover:shadow-lg"
+                className="p-3 rounded-full glass-card text-primary-300 hover:text-white hover:shadow-glow hover:border-primary-400/50 transition-all"
               >
-                <Github size={24} />
+                <Github size={22} />
               </a>
             )}
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="mt-16 flex justify-center"
+          >
+            <ArrowDown className="text-slate-500 animate-bounce" size={22} />
+          </motion.div>
         </div>
       </div>
     </section>

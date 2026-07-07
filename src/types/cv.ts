@@ -55,6 +55,14 @@ export interface Certification {
   link?: string;
 }
 
+export interface Recommendation {
+  id: string;
+  name: string;
+  relationship: string;
+  text: string;
+  source: string;
+}
+
 export interface CVData {
   profile: {
     name: string;
@@ -67,6 +75,7 @@ export interface CVData {
   skills: Skill[];
   projects: Project[];
   certifications: Certification[];
+  recommendations: Recommendation[];
   languages: {
     language: string;
     proficiency: string;

@@ -676,6 +676,22 @@ export const cvData: CVData = {
       date: "2013-01"
     }
   ],
+  recommendations: [
+    {
+      id: "rec-1",
+      name: "Conan Patrick Mercer, PhD",
+      relationship: "Collaborated on several complex projects",
+      text: "Miguel is an outstanding technical lead. Along with being highly skilled in many areas of modern software, he has a natural talent for bringing out the best in people and effectively driving project progress by mentoring and developing individual contributors. What truly sets Miguel apart is his energy. We've collaborated on several complex projects over the past year, and his enthusiasm was instrumental in achieving success. Miguel is also a person of excellent values, and I have full confidence in recommending him to lead complex and challenging software projects.",
+      source: "LinkedIn Recommendation"
+    },
+    {
+      id: "rec-2",
+      name: "Alberto Paulo",
+      relationship: "Worked with Miguel as Development Tech Lead",
+      text: "I've had the privilege of working closely with Miguel as our Development Tech Lead, and I highly recommend him. Miguel is always on time, dedicated, and has a keen eye for improving our applications, and infrastructure. His good English skills help us communicate well, and he creates a positive work environment with his supportive nature. Miguel's technical skills and leadership make him a valuable team member.",
+      source: "LinkedIn Recommendation"
+    }
+  ],
   languages: [
     { language: "Spanish", proficiency: "Native (L1)" },
     { language: "Catalan", proficiency: "Native (L1)" },

@@ -183,6 +183,17 @@ export const cvDataTemplate: CVData = {
     // Add more certifications
   ],
 
+  recommendations: [
+    {
+      id: "rec-1",
+      name: "Recommender Name",
+      relationship: "How they worked with you, e.g. \"Managed you directly\"",
+      text: "The recommendation text, verbatim.",
+      source: "LinkedIn Recommendation"
+    }
+    // Add more recommendations
+  ],
+
   languages: [
     {
       language: "English",

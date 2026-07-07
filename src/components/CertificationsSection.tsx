@@ -1,5 +1,6 @@
 import { Award, ExternalLink } from 'lucide-react';
 import { Certification } from '../types/cv';
+import Reveal from './Reveal';
 
 interface CertificationsSectionProps {
   certifications: Certification[];
@@ -14,57 +15,56 @@ const formatDate = (dateString: string) => {
 
 export default function CertificationsSection({ certifications, languages }: CertificationsSectionProps) {
   return (
-    <section id="certifications" className="py-20 bg-white">
+    <section id="certifications" className="relative py-24 bg-ink-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Certifications & Languages</h2>
-          <p className="text-lg text-gray-600">Professional certifications and language proficiencies</p>
-        </div>
+        <Reveal className="text-center mb-16">
+          <span className="section-eyebrow">Credentials</span>
+          <h2 className="section-title">Certifications &amp; Languages</h2>
+          <p className="text-lg text-slate-400">Professional certifications and language proficiencies</p>
+        </Reveal>
 
         {/* Certifications */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">Certifications</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certifications.map((cert) => (
-              <div
-                key={cert.id}
-                className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-6 border border-primary-100 hover:shadow-lg transition-shadow"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 bg-primary-600 rounded-lg">
-                    <Award className="text-white" size={24} />
+          <h3 className="text-xl font-display font-bold text-white mb-6">Certifications</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {certifications.map((cert, i) => (
+              <Reveal key={cert.id} delay={Math.min(i, 6) * 0.05}>
+                <div className="glass-card p-6 h-full hover:border-primary-400/40 hover:shadow-glow transition-all duration-300">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-primary-500 to-accent-600 shadow-glow">
+                      <Award className="text-white" size={22} />
+                    </div>
+                    {cert.link && (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-primary-300 hover:bg-white/10 rounded-lg transition-colors"
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
                   </div>
-                  {cert.link && (
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 text-primary-600 hover:bg-primary-100 rounded-lg transition-colors"
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  )}
+                  <h4 className="font-bold text-white mb-2">{cert.name}</h4>
+                  <p className="text-sm text-slate-300 mb-2">{cert.issuer}</p>
+                  <p className="text-xs text-slate-500">{formatDate(cert.date)}</p>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">{cert.name}</h4>
-                <p className="text-sm text-gray-700 mb-2">{cert.issuer}</p>
-                <p className="text-xs text-gray-600">{formatDate(cert.date)}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
         {/* Languages */}
         <div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">Languages</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {languages.map((lang) => (
-              <div
-                key={lang.language}
-                className="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center"
-              >
-                <h4 className="text-xl font-bold text-gray-900 mb-2">{lang.language}</h4>
-                <p className="text-primary-600 font-semibold">{lang.proficiency}</p>
-              </div>
+          <h3 className="text-xl font-display font-bold text-white mb-6">Languages</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {languages.map((lang, i) => (
+              <Reveal key={lang.language} delay={i * 0.05}>
+                <div className="glass-card p-6 text-center hover:border-primary-400/40 transition-all duration-300">
+                  <h4 className="text-lg font-display font-bold text-white mb-2">{lang.language}</h4>
+                  <p className="gradient-text font-semibold text-sm">{lang.proficiency}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
