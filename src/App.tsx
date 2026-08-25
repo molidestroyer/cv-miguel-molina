@@ -7,6 +7,7 @@ import EducationSection from './components/EducationSection';
 import SkillsSection from './components/SkillsSection';
 import ProjectsSection from './components/ProjectsSection';
 import CertificationsSection from './components/CertificationsSection';
+import PrintableCV from './components/PrintableCV';
 import { cvData } from './data/cvData';
 
 function App() {
@@ -64,7 +65,11 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-ink-950">
+    <>
+      {/* Print / PDF version — hidden on screen, replaces the site on paper */}
+      <PrintableCV data={cvData} />
+
+      <div className="screen-only min-h-screen bg-ink-950">
       <Navbar onSearch={setSearchQuery} />
 
       <ProfileSection
@@ -106,7 +111,8 @@ function App() {
           </p>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
 

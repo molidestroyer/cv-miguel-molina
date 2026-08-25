@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
-import { Menu, X, User, Briefcase, GraduationCap, Code, FolderGit2, Award, Search, Quote } from 'lucide-react';
+import { Menu, X, User, Briefcase, GraduationCap, Code, FolderGit2, Award, Search, Quote, Download } from 'lucide-react';
+import { downloadCvPdf } from '../utils/printCV';
 
 interface NavbarProps {
   onSearch: (query: string) => void;
@@ -97,16 +98,26 @@ export default function Navbar({ onSearch }: NavbarProps) {
             })}
           </div>
 
-          {/* Search Bar */}
-          <div className="hidden md:flex items-center relative">
-            <Search size={15} className="absolute left-3 text-slate-500" />
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500/60 focus:border-transparent w-48 transition-all"
-            />
+          {/* Search Bar + PDF export */}
+          <div className="hidden md:flex items-center gap-2">
+            <div className="relative flex items-center">
+              <Search size={15} className="absolute left-3 text-slate-500" />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500/60 focus:border-transparent w-40 lg:w-48 transition-all"
+              />
+            </div>
+            <button
+              onClick={downloadCvPdf}
+              title="Download CV as PDF"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 shadow-glow transition-all"
+            >
+              <Download size={16} />
+              <span className="hidden lg:inline">PDF</span>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -158,6 +169,16 @@ export default function Navbar({ onSearch }: NavbarProps) {
                       </button>
                     );
                   })}
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      downloadCvPdf();
+                    }}
+                    className="flex items-center gap-2 w-full px-4 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500"
+                  >
+                    <Download size={18} />
+                    <span>Download PDF</span>
+                  </button>
                 </div>
               </div>
             </motion.div>

@@ -41,6 +41,65 @@ body {
   border-radius: 999px;
 }
 
+/* Print-only CV layout: hidden on screen, the only thing visible on paper/PDF */
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 13mm 14mm 15mm;
+  }
+
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    min-height: 0;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Everything that belongs to the interactive site */
+  .screen-only {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-pdf h1,
+  .cv-pdf h2,
+  .cv-pdf h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .cv-pdf ul,
+  .cv-pdf li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-pdf a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
 @layer components {
   .glass-card {
     @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl;

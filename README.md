@@ -7,6 +7,7 @@ A beautiful, modern, and interactive personal website showcasing my professional
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 - **Interactive Navigation**: Smooth scrolling to different sections
 - **Search Functionality**: Filter content across all sections in real-time
+- **PDF Export**: One-click download of a print-optimised A4 version of the CV
 - **Data Visualization**: Beautiful charts showing skill proficiency levels
 - **Timeline View**: Visual timeline of professional experience
 - **Modern UI**: Clean, minimal design with smooth animations
@@ -153,6 +154,12 @@ cv-miguel-molina/
 - Real-time filtering across all sections
 - Searches through titles, descriptions, technologies, and more
 - Responsive to user input
+
+### PDF Export
+- "Download PDF" buttons in the hero section and the navbar (desktop + mobile menu)
+- Uses the browser's native print dialog (`Save as PDF`) — no extra dependencies, selectable text, ATS friendly
+- `src/components/PrintableCV.tsx` renders a dedicated light A4 layout that is `display: none` on screen and replaces the whole site inside `@media print` (see the print block in `src/index.css`)
+- Add `print-avoid-break` to any block that must not be split across pages
 
 ## 📄 License
 

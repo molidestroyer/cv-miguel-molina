@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Github, ArrowDown } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, ArrowDown, Download } from 'lucide-react';
 import { ContactInfo } from '../types/cv';
+import { downloadCvPdf } from '../utils/printCV';
 
 interface ProfileSectionProps {
   name: string;
@@ -121,6 +122,22 @@ export default function ProfileSection({ name, title, summary, contact, stats }:
               <MapPin size={18} />
               <span className="text-sm">{contact.location}</span>
             </div>
+          </motion.div>
+
+          {/* Download PDF */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="flex justify-center mb-8"
+          >
+            <button
+              onClick={downloadCvPdf}
+              className="group flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 shadow-glow hover:shadow-glow-accent transition-all"
+            >
+              <Download size={18} className="transition-transform group-hover:translate-y-0.5" />
+              <span>Download PDF</span>
+            </button>
           </motion.div>
 
           {/* Social Links */}
