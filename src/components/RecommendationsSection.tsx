@@ -26,7 +26,18 @@ export default function RecommendationsSection({ recommendations }: Recommendati
                 <p className="relative text-slate-300 leading-relaxed mb-6 italic">"{rec.text}"</p>
                 <div className="relative flex items-center justify-between gap-3 pt-4 border-t border-white/10">
                   <div>
-                    <p className="font-semibold text-white">{rec.name}</p>
+                    {rec.linkedinUrl ? (
+                      <a
+                        href={rec.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-white hover:text-primary-400 transition-colors"
+                      >
+                        {rec.name}
+                      </a>
+                    ) : (
+                      <p className="font-semibold text-white">{rec.name}</p>
+                    )}
                     <p className="text-sm text-slate-400">{rec.relationship}</p>
                   </div>
                   <span className="flex items-center gap-1 text-xs text-slate-500 flex-shrink-0">

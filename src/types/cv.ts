@@ -61,6 +61,7 @@ export interface Recommendation {
   relationship: string;
   text: string;
   source: string;
+  linkedinUrl?: string;
 }
 
 export interface CVData {

@@ -682,14 +682,24 @@ export const cvData: CVData = {
       name: "Conan Patrick Mercer, PhD",
       relationship: "Collaborated on several complex projects",
       text: "Miguel is an outstanding technical lead. Along with being highly skilled in many areas of modern software, he has a natural talent for bringing out the best in people and effectively driving project progress by mentoring and developing individual contributors. What truly sets Miguel apart is his energy. We've collaborated on several complex projects over the past year, and his enthusiasm was instrumental in achieving success. Miguel is also a person of excellent values, and I have full confidence in recommending him to lead complex and challenging software projects.",
-      source: "LinkedIn Recommendation"
+      source: "LinkedIn Recommendation",
+      linkedinUrl: "https://www.linkedin.com/in/conanmercer/"
     },
     {
       id: "rec-2",
       name: "Alberto Paulo",
       relationship: "Worked with Miguel as Development Tech Lead",
       text: "I've had the privilege of working closely with Miguel as our Development Tech Lead, and I highly recommend him. Miguel is always on time, dedicated, and has a keen eye for improving our applications, and infrastructure. His good English skills help us communicate well, and he creates a positive work environment with his supportive nature. Miguel's technical skills and leadership make him a valuable team member.",
-      source: "LinkedIn Recommendation"
+      source: "LinkedIn Recommendation",
+      linkedinUrl: "https://www.linkedin.com/in/albertopaulo/"
+    },
+    {
+      id: "rec-3",
+      name: "Mert Koldamca",
+      relationship: "QA Team Lead at Sage — Miguel managed Mert",
+      text: "I have had the pleasure of working with Miguel Molina Montilla, and I can confidently say that he is an exceptional leader who consistently creates an environment where people can succeed and grow. Miguel combines technical understanding, strategic thinking, and genuine support for his team. He encourages collaboration, promotes open communication, and always makes himself available to help remove obstacles when challenges arise. What I particularly appreciate is his ability to trust his team while providing the guidance needed to achieve high-quality results. As a manager, Miguel fosters continuous learning, professional development, and a culture of accountability. His leadership style empowers people to take ownership of their work, build confidence, and deliver their best. I am grateful for the opportunity to work with him and would highly recommend Miguel to any organization looking for a leader who truly invests in both business success and the growth of his people.",
+      source: "LinkedIn Recommendation",
+      linkedinUrl: "https://www.linkedin.com/in/mert-koldamca/"
     }
   ],
   languages: [
