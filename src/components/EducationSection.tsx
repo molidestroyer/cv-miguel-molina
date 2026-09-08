@@ -1,25 +1,35 @@
 import { GraduationCap, Calendar, MapPin } from 'lucide-react';
-import { Education } from '../types/cv';
+import { Education, Language } from '../types/cv';
+import { translations } from '../data/translations';
 import Reveal from './Reveal';
 
 interface EducationSectionProps {
   education: Education[];
+  language?: Language;
 }
 
-const formatDate = (dateString: string) => {
+const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MONTHS_ES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+const formatDate = (dateString: string, lang: Language) => {
   const [year, month] = dateString.split('-');
-  const date = new Date(parseInt(year), parseInt(month) - 1);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+  const monthIndex = parseInt(month, 10) - 1;
+  const list = lang === 'es' ? MONTHS_ES : MONTHS_EN;
+  return list[monthIndex] ? `${list[monthIndex]} ${year}` : year;
 };
 
-export default function EducationSection({ education }: EducationSectionProps) {
+export default function EducationSection({ education, language = 'en' }: EducationSectionProps) {
+  const t = translations[language].education;
+
   return (
     <section id="education" className="relative py-24 bg-ink-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-16">
-          <span className="section-eyebrow">Foundations</span>
-          <h2 className="section-title">Education</h2>
-          <p className="text-lg text-slate-400">Academic background and qualifications</p>
+          <span className="section-eyebrow">{t.eyebrow}</span>
+          <h2 className="section-title">
+            {t.title} <span className="gradient-text">{t.titleHighlight}</span>
+          </h2>
+          <p className="text-lg text-slate-400">{t.subtitle}</p>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -38,7 +48,7 @@ export default function EducationSection({ education }: EducationSectionProps) {
                       <div className="flex items-center gap-1.5">
                         <Calendar size={14} />
                         <span>
-                          {formatDate(edu.startDate)} - {formatDate(edu.endDate)}
+                          {formatDate(edu.startDate, language)} - {formatDate(edu.endDate, language)}
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5">

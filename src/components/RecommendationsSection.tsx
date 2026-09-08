@@ -1,21 +1,27 @@
 import { Quote, Linkedin } from 'lucide-react';
-import { Recommendation } from '../types/cv';
+import { Recommendation, Language } from '../types/cv';
+import { translations } from '../data/translations';
 import Reveal from './Reveal';
 
 interface RecommendationsSectionProps {
   recommendations: Recommendation[];
+  language?: Language;
 }
 
-export default function RecommendationsSection({ recommendations }: RecommendationsSectionProps) {
+export default function RecommendationsSection({ recommendations, language = 'en' }: RecommendationsSectionProps) {
   if (recommendations.length === 0) return null;
+
+  const t = translations[language].recommendations;
 
   return (
     <section id="recommendations" className="relative py-24 bg-ink-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-16">
-          <span className="section-eyebrow">What people say</span>
-          <h2 className="section-title">Recommendations</h2>
-          <p className="text-lg text-slate-400">Straight from LinkedIn colleagues and managers</p>
+          <span className="section-eyebrow">{t.eyebrow}</span>
+          <h2 className="section-title">
+            {t.title} <span className="gradient-text">{t.titleHighlight}</span>
+          </h2>
+          <p className="text-lg text-slate-400">{t.subtitle}</p>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

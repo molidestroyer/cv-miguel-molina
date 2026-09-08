@@ -1,21 +1,25 @@
 import { Mail, MapPin, Linkedin, Github, Phone } from 'lucide-react';
-import { CVData } from '../types/cv';
+import { CVData, Language } from '../types/cv';
+import { translations } from '../data/translations';
 
 interface PrintableCVProps {
   data: CVData;
+  lang?: Language;
 }
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MONTHS_ES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
-function formatDate(value: string) {
+function formatDate(value: string, lang: Language) {
   if (!value) return '';
   const [year, month] = value.split('-');
   const monthIndex = parseInt(month, 10) - 1;
-  return MONTHS[monthIndex] ? `${MONTHS[monthIndex]} ${year}` : year;
+  const list = lang === 'es' ? MONTHS_ES : MONTHS_EN;
+  return list[monthIndex] ? `${list[monthIndex]} ${year}` : year;
 }
 
-function formatRange(startDate: string, endDate: string, current?: boolean) {
-  return `${formatDate(startDate)} — ${current ? 'Present' : formatDate(endDate)}`;
+function formatRange(startDate: string, endDate: string, current: boolean | undefined, lang: Language, presentLabel: string) {
+  return `${formatDate(startDate, lang)} — ${current ? presentLabel : formatDate(endDate, lang)}`;
 }
 
 function SectionTitle({ title }: { title: string }) {
@@ -26,8 +30,9 @@ function SectionTitle({ title }: { title: string }) {
   );
 }
 
-export default function PrintableCV({ data }: PrintableCVProps) {
+export default function PrintableCV({ data, lang = 'en' }: PrintableCVProps) {
   const { profile, experience, education, skills, projects, certifications, recommendations, languages } = data;
+  const tPrint = translations[lang].printable;
 
   const skillsByCategory = skills.reduce<Record<string, string[]>>((acc, skill) => {
     if (!acc[skill.category]) {
@@ -73,13 +78,13 @@ export default function PrintableCV({ data }: PrintableCVProps) {
 
       {/* Summary */}
       <section className="print-avoid-break mb-4">
-        <SectionTitle title="Profile" />
+        <SectionTitle title={tPrint.profile} />
         <p className="text-justify text-slate-700">{profile.summary}</p>
       </section>
 
       {/* Experience */}
       <section className="mb-4">
-        <SectionTitle title="Professional Experience" />
+        <SectionTitle title={tPrint.experience} />
         <div className="space-y-3">
           {experience.map((exp) => (
             <article key={exp.id} className="print-avoid-break">
@@ -88,7 +93,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
                   {exp.position} <span className="font-normal text-slate-600">· {exp.company}</span>
                 </h3>
                 <span className="shrink-0 text-[8pt] font-medium text-slate-500 whitespace-nowrap">
-                  {formatRange(exp.startDate, exp.endDate, exp.current)}
+                  {formatRange(exp.startDate, exp.endDate, exp.current, lang, tPrint.present)}
                 </span>
               </div>
               <p className="text-[8pt] italic text-slate-500 mb-1">{exp.location}</p>
@@ -104,7 +109,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
 
               {exp.technologies.length > 0 && (
                 <p className="mt-1 text-[8pt] text-slate-600">
-                  <span className="font-semibold text-slate-700">Tech:</span> {exp.technologies.join(' · ')}
+                  <span className="font-semibold text-slate-700">{tPrint.tech}</span> {exp.technologies.join(' · ')}
                 </p>
               )}
             </article>
@@ -114,7 +119,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
 
       {/* Skills */}
       <section className="mb-4 print-avoid-break">
-        <SectionTitle title="Skills" />
+        <SectionTitle title={tPrint.skills} />
         <div className="space-y-1">
           {Object.entries(skillsByCategory).map(([category, names]) => (
             <p key={category}>
@@ -127,7 +132,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
 
       {/* Education */}
       <section className="mb-4">
-        <SectionTitle title="Education" />
+        <SectionTitle title={tPrint.education} />
         <div className="space-y-2">
           {education.map((edu) => (
             <article key={edu.id} className="print-avoid-break">
@@ -137,7 +142,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
                   {edu.field ? ` — ${edu.field}` : ''}
                 </h3>
                 <span className="shrink-0 text-[8pt] font-medium text-slate-500 whitespace-nowrap">
-                  {formatRange(edu.startDate, edu.endDate)}
+                  {formatRange(edu.startDate, edu.endDate, false, lang, tPrint.present)}
                 </span>
               </div>
               <p className="text-[8.5pt] text-slate-600">
@@ -152,7 +157,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
 
       {/* Projects */}
       <section className="mb-4">
-        <SectionTitle title="Projects &amp; Flagship Applications" />
+        <SectionTitle title={tPrint.projects} />
         <div className="space-y-2.5">
           {projects.map((project) => (
             <article key={project.id} className="print-avoid-break">
@@ -161,7 +166,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
                   {project.name}
                   {project.category === 'personal' && (
                     <span className="ml-2 text-[7.5pt] font-medium text-emerald-800 bg-emerald-50 border border-emerald-300 rounded px-1.5 py-0.5">
-                      Personal App · Live
+                      {tPrint.personalAppBadge}
                     </span>
                   )}
                 </h3>
@@ -182,7 +187,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
               )}
               {project.technologies.length > 0 && (
                 <p className="mt-0.5 text-[8pt] text-slate-600">
-                  <span className="font-semibold text-slate-700">Tech:</span> {project.technologies.join(' · ')}
+                  <span className="font-semibold text-slate-700">{tPrint.tech}</span> {project.technologies.join(' · ')}
                 </p>
               )}
               {project.link && (
@@ -201,7 +206,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
       <section className="mb-4 print-avoid-break">
         <div className="grid grid-cols-2 gap-6">
           <div>
-            <SectionTitle title="Certifications" />
+            <SectionTitle title={tPrint.certifications} />
             <ul className="space-y-1">
               {certifications.map((cert) => (
                 <li key={cert.id}>
@@ -216,12 +221,12 @@ export default function PrintableCV({ data }: PrintableCVProps) {
             </ul>
           </div>
           <div>
-            <SectionTitle title="Languages" />
+            <SectionTitle title={tPrint.languages} />
             <ul className="space-y-1">
-              {languages.map((lang) => (
-                <li key={lang.language}>
-                  <span className="font-semibold text-slate-900">{lang.language}</span>
-                  <span className="text-slate-600">{` — ${lang.proficiency}`}</span>
+              {languages.map((langItem) => (
+                <li key={langItem.language}>
+                  <span className="font-semibold text-slate-900">{langItem.language}</span>
+                  <span className="text-slate-600">{` — ${langItem.proficiency}`}</span>
                 </li>
               ))}
             </ul>
@@ -232,7 +237,7 @@ export default function PrintableCV({ data }: PrintableCVProps) {
       {/* Recommendations */}
       {recommendations.length > 0 && (
         <section className="print-avoid-break">
-          <SectionTitle title="Recommendations" />
+          <SectionTitle title={tPrint.recommendations} />
           <div className="space-y-2">
             {recommendations.map((rec) => (
               <blockquote key={rec.id} className="print-avoid-break border-l-2 border-[#0369a1]/40 pl-3">

@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Github, ArrowDown, Download } from 'lucide-react';
-import { ContactInfo } from '../types/cv';
+import { ContactInfo, Language } from '../types/cv';
 import { downloadCvPdf } from '../utils/printCV';
+import { translations } from '../data/translations';
 
 interface ProfileSectionProps {
   name: string;
@@ -9,9 +10,11 @@ interface ProfileSectionProps {
   summary: string;
   contact: ContactInfo;
   stats: { label: string; value: string }[];
+  language?: Language;
 }
 
-export default function ProfileSection({ name, title, summary, contact, stats }: ProfileSectionProps) {
+export default function ProfileSection({ name, title, summary, contact, stats, language = 'en' }: ProfileSectionProps) {
+  const t = translations[language].profile;
   return (
     <section
       id="profile"
@@ -132,11 +135,11 @@ export default function ProfileSection({ name, title, summary, contact, stats }:
             className="flex justify-center mb-8"
           >
             <button
-              onClick={downloadCvPdf}
+              onClick={() => downloadCvPdf(language)}
               className="group flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 shadow-glow hover:shadow-glow-accent transition-all"
             >
               <Download size={18} className="transition-transform group-hover:translate-y-0.5" />
-              <span>Download PDF</span>
+              <span>{t.downloadPdf}</span>
             </button>
           </motion.div>
 

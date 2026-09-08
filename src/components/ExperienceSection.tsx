@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Briefcase } from 'lucide-react';
-import { Experience } from '../types/cv';
+import { Experience, Language } from '../types/cv';
 import { getCompanyLogoUrl, COMPANY_LOGO_OPAQUE } from '../data/companyLogos';
+import { translations } from '../data/translations';
 import Reveal from './Reveal';
 
 interface ExperienceSectionProps {
   experiences: Experience[];
+  language?: Language;
 }
 
-const formatDate = (dateString: string) => {
+const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MONTHS_ES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+const formatDate = (dateString: string, lang: Language) => {
   const [year, month] = dateString.split('-');
-  const date = new Date(parseInt(year), parseInt(month) - 1);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+  const monthIndex = parseInt(month, 10) - 1;
+  const list = lang === 'es' ? MONTHS_ES : MONTHS_EN;
+  return list[monthIndex] ? `${list[monthIndex]} ${year}` : year;
 };
 
 function CompanyBadge({ company }: { company: string }) {
@@ -44,14 +50,18 @@ function CompanyBadge({ company }: { company: string }) {
   );
 }
 
-export default function ExperienceSection({ experiences }: ExperienceSectionProps) {
+export default function ExperienceSection({ experiences, language = 'en' }: ExperienceSectionProps) {
+  const t = translations[language].experience;
+
   return (
     <section id="experience" className="relative py-24 bg-ink-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-16">
-          <span className="section-eyebrow">Career journey</span>
-          <h2 className="section-title">Professional Experience</h2>
-          <p className="text-lg text-slate-400">Leading teams, shipping software, keeping the lights on</p>
+          <span className="section-eyebrow">{t.eyebrow}</span>
+          <h2 className="section-title">
+            {t.title} <span className="gradient-text">{t.titleHighlight}</span>
+          </h2>
+          <p className="text-lg text-slate-400">{t.subtitle}</p>
         </Reveal>
 
         <div className="relative pl-8 md:pl-12">
@@ -84,7 +94,7 @@ export default function ExperienceSection({ experiences }: ExperienceSectionProp
                       <p className="text-base font-semibold gradient-text">{exp.company}</p>
                       {exp.current && (
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">
-                          Current
+                          {t.present}
                         </span>
                       )}
                     </div>
@@ -92,7 +102,7 @@ export default function ExperienceSection({ experiences }: ExperienceSectionProp
                       <div className="flex items-center gap-1.5">
                         <Calendar size={14} />
                         <span>
-                          {formatDate(exp.startDate)} - {exp.current ? 'Present' : formatDate(exp.endDate)}
+                          {formatDate(exp.startDate, language)} - {exp.current ? t.present : formatDate(exp.endDate, language)}
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5">
@@ -107,7 +117,7 @@ export default function ExperienceSection({ experiences }: ExperienceSectionProp
                   {exp.achievements.length > 0 && (
                     <div className="mb-4">
                       <h4 className="font-semibold text-white mb-2 text-sm uppercase tracking-wide text-slate-400">
-                        Key Achievements
+                        {t.keyAchievements}
                       </h4>
                       <ul className="space-y-1.5">
                         {exp.achievements.map((achievement, i) => (

@@ -816,3 +816,6 @@ export const cvData: CVData = {
     { language: "English", proficiency: "Advanced (C1)" }
   ]
 };
+
+export const cvDataEn = cvData;
+export { cvDataEs } from './cvDataEs';

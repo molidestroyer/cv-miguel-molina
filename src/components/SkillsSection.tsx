@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Skill } from '../types/cv';
+import { Skill, Language } from '../types/cv';
+import { translations } from '../data/translations';
 import Reveal from './Reveal';
 
 interface SkillsSectionProps {
   skills: Skill[];
+  language?: Language;
 }
 
-export default function SkillsSection({ skills }: SkillsSectionProps) {
+export default function SkillsSection({ skills, language = 'en' }: SkillsSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const t = translations[language].skills;
 
   const categories = ['all', ...Array.from(new Set(skills.map((s) => s.category)))];
 
@@ -29,9 +32,11 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
     <section id="skills" className="relative py-24 bg-ink-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-16">
-          <span className="section-eyebrow">Toolbox</span>
-          <h2 className="section-title">Skills &amp; Technologies</h2>
-          <p className="text-lg text-slate-400">Technical expertise and proficiency levels</p>
+          <span className="section-eyebrow">{t.eyebrow}</span>
+          <h2 className="section-title">
+            {t.title} <span className="gradient-text">{t.titleHighlight}</span>
+          </h2>
+          <p className="text-lg text-slate-400">{t.subtitle}</p>
         </Reveal>
 
         {/* Category Filter */}
@@ -46,14 +51,16 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
                   : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white'
               }`}
             >
-              {category === 'all' ? 'All Skills' : category}
+              {category === 'all' ? (language === 'es' ? 'Todas las Habilidades' : 'All Skills') : category}
             </button>
           ))}
         </Reveal>
 
         {/* Skills Chart */}
         <Reveal delay={0.15} className="mb-16">
-          <h3 className="text-xl font-display font-bold text-white mb-6 text-center">Top Skills Overview</h3>
+          <h3 className="text-xl font-display font-bold text-white mb-6 text-center">
+            {language === 'es' ? 'Resumen de Habilidades Principales' : 'Top Skills Overview'}
+          </h3>
           <div className="glass-card p-6">
             <div className="space-y-3">
               {chartData.map((skill, i) => (

@@ -11,17 +11,23 @@ import {
   Layers,
   CheckCircle2
 } from 'lucide-react';
-import { Project } from '../types/cv';
+import { Project, Language } from '../types/cv';
+import { translations } from '../data/translations';
 import Reveal from './Reveal';
 
 interface ProjectsSectionProps {
   projects: Project[];
+  language?: Language;
 }
 
-const formatDate = (dateString: string) => {
+const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MONTHS_ES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+const formatDate = (dateString: string, lang: Language) => {
   const [year, month] = dateString.split('-');
-  const date = new Date(parseInt(year, 10), parseInt(month, 10) - 1);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+  const monthIndex = parseInt(month, 10) - 1;
+  const list = lang === 'es' ? MONTHS_ES : MONTHS_EN;
+  return list[monthIndex] ? `${list[monthIndex]} ${year}` : year;
 };
 
 const getAssetUrl = (url: string) => {
@@ -33,13 +39,15 @@ const getAssetUrl = (url: string) => {
   return `${base}${cleanUrl}`;
 };
 
-export default function ProjectsSection({ projects }: ProjectsSectionProps) {
+export default function ProjectsSection({ projects, language = 'en' }: ProjectsSectionProps) {
   const [activeFilter, setActiveFilter] = useState<'all' | 'personal' | 'enterprise'>('all');
   const [activeImageIndices, setActiveImageIndices] = useState<Record<string, number>>({});
   const [lightbox, setLightbox] = useState<{
     projectId: string;
     imageIndex: number;
   } | null>(null);
+
+  const t = translations[language].projects;
 
   const personalProjects = projects.filter((p) => p.category === 'personal');
   const enterpriseProjects = projects.filter((p) => p.category !== 'personal');
@@ -117,13 +125,13 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-12">
           <span className="section-eyebrow flex items-center justify-center gap-2">
-            <Sparkles size={14} className="text-primary-400" /> Featured Work &amp; Applications
+            <Sparkles size={14} className="text-primary-400" /> {t.eyebrow}
           </span>
           <h2 className="section-title">
-            Featured <span className="gradient-text">Projects</span>
+            {t.title} <span className="gradient-text">{t.titleHighlight}</span>
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Flagship personal web apps in production with modern architectures, and high-impact enterprise solutions.
+            {t.subtitle}
           </p>
 
           {/* Filter Pills */}
@@ -136,7 +144,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'
               }`}
             >
-              All Projects ({projects.length})
+              {t.filterAll} ({projects.length})
             </button>
             <button
               onClick={() => setActiveFilter('personal')}
@@ -147,7 +155,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
               }`}
             >
               <Sparkles size={15} className="text-accent-300" />
-              Flagship Personal Apps ({personalProjects.length})
+              {t.filterPersonal} ({personalProjects.length})
             </button>
             <button
               onClick={() => setActiveFilter('enterprise')}
@@ -157,7 +165,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'
               }`}
             >
-              Enterprise Projects ({enterpriseProjects.length})
+              {t.filterEnterprise} ({enterpriseProjects.length})
             </button>
           </div>
         </Reveal>
@@ -199,7 +207,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                             </div>
                           </div>
 
-                          {/* Screenshot Container */}
+                            {/* Screenshot Container */}
                           <div
                             className="relative aspect-[16/10] bg-black/60 overflow-hidden cursor-pointer group/img"
                             onClick={() =>
@@ -215,14 +223,14 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                               />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center text-slate-600">
-                                No preview available
+                                {t.noPreview}
                               </div>
                             )}
 
                             {/* Hover overlay with zoom button */}
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-black/20 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                               <span className="flex items-center gap-2 px-4 py-2 bg-primary-500/90 text-white text-xs font-semibold rounded-lg shadow-lg backdrop-blur-sm transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
-                                <Maximize2 size={14} /> Expand Screenshot
+                                <Maximize2 size={14} /> {t.expandScreenshot}
                               </span>
                             </div>
 
@@ -231,14 +239,14 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                               <>
                                 <button
                                   onClick={(e) => handlePrevImage(e, project)}
-                                  aria-label="Previous screenshot"
+                                  aria-label={t.prevScreenshot}
                                   className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-950/80 hover:bg-primary-500 text-white flex items-center justify-center opacity-80 hover:opacity-100 transition-all shadow-md z-10"
                                 >
                                   <ChevronLeft size={18} />
                                 </button>
                                 <button
                                   onClick={(e) => handleNextImage(e, project)}
-                                  aria-label="Next screenshot"
+                                  aria-label={t.nextScreenshot}
                                   className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-950/80 hover:bg-primary-500 text-white flex items-center justify-center opacity-80 hover:opacity-100 transition-all shadow-md z-10"
                                 >
                                   <ChevronRight size={18} />
@@ -296,7 +304,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                               </span>
                             )}
                             <span className="text-xs text-slate-500 font-mono">
-                              {formatDate(project.date)}
+                              {formatDate(project.date, language)}
                             </span>
                           </div>
 
@@ -318,7 +326,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                           {project.highlights.length > 0 && (
                             <div className="mb-4">
                               <h4 className="text-xs uppercase font-semibold tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
-                                <Layers size={13} className="text-primary-400" /> Architecture &amp; Engineering Highlights
+                                <Layers size={13} className="text-primary-400" /> {t.architectureHighlights}
                               </h4>
                               <ul className="space-y-2">
                                 {project.highlights.map((highlight, hi) => (
@@ -356,7 +364,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                               rel="noopener noreferrer"
                               className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 text-white text-sm font-semibold shadow-lg shadow-primary-500/20 transition-all hover:scale-[1.02]"
                             >
-                              <span>Visit {project.name}</span>
+                              <span>{language === 'es' ? `Visitar ${project.name}` : `Visit ${project.name}`}</span>
                               <ExternalLink size={16} />
                             </a>
                           )}
@@ -381,10 +389,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </div>
                 <div>
                   <h3 className="text-xl font-display font-bold text-white">
-                    Enterprise &amp; Client Projects
+                    {t.enterpriseTitle}
                   </h3>
                   <p className="text-xs text-slate-400">
-                    Corporate platforms, cloud migrations, and mission-critical client architectures
+                    {t.enterpriseSubtitle}
                   </p>
                 </div>
                 <div className="flex-1 border-t border-white/10 ml-4 hidden md:block" />
@@ -405,7 +413,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                             <h3 className="text-base font-display font-bold text-white">
                               {project.name}
                             </h3>
-                            <p className="text-xs text-slate-500">{formatDate(project.date)}</p>
+                            <p className="text-xs text-slate-500">{formatDate(project.date, language)}</p>
                           </div>
                         </div>
                         {project.link && (
@@ -427,7 +435,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                       {project.highlights.length > 0 && (
                         <div className="mb-4">
                           <h4 className="font-semibold text-white mb-2 text-xs uppercase tracking-wide text-slate-400">
-                            Key Highlights
+                            {t.keyAchievements}
                           </h4>
                           <ul className="space-y-1.5">
                             {project.highlights.map((highlight, hi) => (
@@ -491,14 +499,14 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     rel="noopener noreferrer"
                     className="p-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-xs flex items-center gap-1.5"
                   >
-                    <span>Visit Site</span>
+                    <span>{t.visitSite}</span>
                     <ExternalLink size={14} />
                   </a>
                 )}
                 <button
                   onClick={() => setLightbox(null)}
                   className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-                  aria-label="Close preview"
+                  aria-label={t.closePreview}
                 >
                   <X size={20} />
                 </button>

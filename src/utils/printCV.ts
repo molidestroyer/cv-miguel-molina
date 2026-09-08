@@ -1,12 +1,13 @@
-const PDF_FILE_NAME = 'Miguel Molina Montilla - CV';
+import { Language } from '../types/cv';
 
 /**
  * Opens the browser print dialog with the print-only CV layout.
  * The document title drives the default file name in "Save as PDF".
  */
-export function downloadCvPdf() {
+export function downloadCvPdf(lang: Language = 'en') {
   const originalTitle = document.title;
-  document.title = PDF_FILE_NAME;
+  const suffix = lang === 'es' ? ' (ES)' : ' (EN)';
+  document.title = `Miguel Molina Montilla - CV${suffix}`;
 
   const restore = () => {
     document.title = originalTitle;

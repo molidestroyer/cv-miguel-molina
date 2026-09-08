@@ -2,25 +2,31 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { Menu, X, User, Briefcase, GraduationCap, Code, FolderGit2, Award, Search, Quote, Download } from 'lucide-react';
 import { downloadCvPdf } from '../utils/printCV';
+import { Language } from '../types/cv';
+import { translations } from '../data/translations';
 
 interface NavbarProps {
   onSearch: (query: string) => void;
+  language: Language;
+  onLanguageChange: (lang: Language) => void;
 }
 
-const navItems = [
-  { id: 'profile', label: 'Profile', icon: User },
-  { id: 'experience', label: 'Experience', icon: Briefcase },
-  { id: 'recommendations', label: 'Recommendations', icon: Quote },
-  { id: 'education', label: 'Education', icon: GraduationCap },
-  { id: 'skills', label: 'Skills', icon: Code },
-  { id: 'projects', label: 'Projects', icon: FolderGit2 },
-  { id: 'certifications', label: 'Certifications', icon: Award },
-];
-
-export default function Navbar({ onSearch }: NavbarProps) {
+export default function Navbar({ onSearch, language, onLanguageChange }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSection, setActiveSection] = useState('profile');
+
+  const t = translations[language].nav;
+
+  const navItems = [
+    { id: 'profile', label: t.profile, icon: User },
+    { id: 'experience', label: t.experience, icon: Briefcase },
+    { id: 'recommendations', label: t.recommendations, icon: Quote },
+    { id: 'education', label: t.education, icon: GraduationCap },
+    { id: 'skills', label: t.skills, icon: Code },
+    { id: 'projects', label: t.projects, icon: FolderGit2 },
+    { id: 'certifications', label: t.certifications, icon: Award },
+  ];
 
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 25, restDelta: 0.001 });
@@ -98,30 +104,80 @@ export default function Navbar({ onSearch }: NavbarProps) {
             })}
           </div>
 
-          {/* Search Bar + PDF export */}
+          {/* Language Switcher + Search Bar + PDF export */}
           <div className="hidden md:flex items-center gap-2">
+            {/* Language Switcher Pill */}
+            <div className="flex items-center p-0.5 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => onLanguageChange('en')}
+                className={`px-2.5 py-1 rounded-md transition-all ${
+                  language === 'en'
+                    ? 'bg-primary-500 text-white shadow-sm font-bold'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+                title="Switch to English"
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => onLanguageChange('es')}
+                className={`px-2.5 py-1 rounded-md transition-all ${
+                  language === 'es'
+                    ? 'bg-primary-500 text-white shadow-sm font-bold'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+                title="Cambiar a Español"
+              >
+                ES
+              </button>
+            </div>
+
             <div className="relative flex items-center">
               <Search size={15} className="absolute left-3 text-slate-500" />
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder={t.searchPlaceholder}
                 value={searchQuery}
                 onChange={handleSearchChange}
                 className="pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500/60 focus:border-transparent w-40 lg:w-48 transition-all"
               />
             </div>
             <button
-              onClick={downloadCvPdf}
-              title="Download CV as PDF"
+              onClick={() => downloadCvPdf(language)}
+              title={language === 'es' ? 'Descargar CV en PDF' : 'Download CV as PDF'}
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 shadow-glow transition-all"
             >
               <Download size={16} />
-              <span className="hidden lg:inline">PDF</span>
+              <span className="hidden lg:inline">{t.pdfButton}</span>
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center p-0.5 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => onLanguageChange('en')}
+                className={`px-2 py-1 rounded-md transition-all ${
+                  language === 'en' ? 'bg-primary-500 text-white font-bold' : 'text-slate-400'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => onLanguageChange('es')}
+                className={`px-2 py-1 rounded-md transition-all ${
+                  language === 'es' ? 'bg-primary-500 text-white font-bold' : 'text-slate-400'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg text-slate-300 hover:bg-white/10"
@@ -146,7 +202,7 @@ export default function Navbar({ onSearch }: NavbarProps) {
                   <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                   <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder={t.searchPlaceholder}
                     value={searchQuery}
                     onChange={handleSearchChange}
                     className="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500/60"
@@ -172,12 +228,12 @@ export default function Navbar({ onSearch }: NavbarProps) {
                   <button
                     onClick={() => {
                       setIsOpen(false);
-                      downloadCvPdf();
+                      downloadCvPdf(language);
                     }}
                     className="flex items-center gap-2 w-full px-4 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500"
                   >
                     <Download size={18} />
-                    <span>Download PDF</span>
+                    <span>{language === 'es' ? 'Descargar PDF' : 'Download PDF'}</span>
                   </button>
                 </div>
               </div>
