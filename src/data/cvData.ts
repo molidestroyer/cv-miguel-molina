@@ -533,29 +533,29 @@ export const cvData: CVData = {
       id: "proj-personal-chollolocura",
       name: "CholloLocura.es",
       category: "personal",
-      badge: "Flagship · En Producción",
-      tagline: "Ecosistema automatizado de inteligencia de precios, agregador de ofertas y comunidad (+50K usuarios)",
-      description: "Plataforma de alta escala para detección, comparación y difusión automática de ofertas y chollos en tiempo real. Integra arquitectura de microservicios con .NET Aspire, agentes autónomos de Inteligencia Artificial para curación de contenido y generación de copys/imágenes, scrapers multitienda (Amazon PA-API, AWIN, feeds CSV), bot interactivo de Telegram con canales temáticos, y panel analítico avanzado de clics y conversiones.",
+      badge: "Flagship · Live in Production",
+      tagline: "Automated price intelligence ecosystem, real-time deal aggregator & community (+50K users)",
+      description: "High-scale platform for real-time deal discovery, price tracking, and automated multi-channel distribution. Features a microservices architecture orchestrated with .NET Aspire, autonomous AI agents for deal curation and copy/image generation, multi-merchant scrapers (Amazon PA-API, AWIN, partner CSV feeds), an interactive Telegram bot with themed channels, and advanced click/conversion analytics.",
       technologies: [".NET Aspire", ".NET 10", "C#", "Blazor SSR", "Entity Framework Core", "Python (Flask & Telethon)", "AI Agents", "Azure App Service Linux", "Azure Functions", "SQL Server", "Tailwind CSS"],
       highlights: [
-        "Orquestación de microservicios centralizada con .NET Aspire (Admin Web, User Web, API, AI Dashboard y Workers)",
-        "Canal de difusión masiva y bot Telegram conectado a comunidad activa de más de 50.000 usuarios",
-        "Pipeline inteligente de precios con detección de mínimos históricos y sincronización continua de feeds de afiliados",
-        "Generación automatizada de creatividades y fichas de producto mediante agentes de IA",
-        "Módulo de analítica de tráfico de alta precisión con clasificación de bots/dispositivos y atribución de conversiones"
+        "Centralized microservices orchestration with .NET Aspire (Admin Web, User Web, REST API, AI Dashboard, and Background Workers)",
+        "High-reach Telegram broadcast channels and interactive bot connected to an active community of 50,000+ users",
+        "Intelligent price pipeline detecting historic all-time lows with continuous affiliate merchant feed synchronization",
+        "Autonomous AI deal curation agents generating optimized product copy, banners, and social creatives",
+        "High-precision link tracking and analytics module with bot filtering, device classification, and affiliate conversion attribution"
       ],
       link: "https://www.chollolocura.es",
       date: "2023-01",
       screenshots: [
         {
           url: "/projects/chollolocura-home.png",
-          title: "Portal Principal & Buscador",
-          caption: "Buscador en tiempo real, categorías de chollos destacados y barra de sincronización con canales de Telegram."
+          title: "Main Portal & Search Engine",
+          caption: "Real-time search engine, featured deal categories, and live Telegram channel integration bar."
         },
         {
           url: "/projects/chollolocura-links.png",
-          title: "Hub de Enlaces & Chollos Top",
-          caption: "Página 'Link in bio' optimizada con enlaces directos, imprescindibles del día y analítica de clicks."
+          title: "Link Hub & Trending Deals",
+          caption: "Optimized 'Link-in-bio' hub with direct merchant links, daily essentials, and click analytics."
         }
       ]
     },
@@ -563,34 +563,34 @@ export const cvData: CVData = {
       id: "proj-personal-neogeoaesplus",
       name: "NeoGeo AES+",
       category: "personal",
-      badge: "En Producción · Retro Hub",
-      tagline: "E-commerce, catálogo histórico y monitor de cotizaciones para coleccionistas de SNK Neo Geo AES",
-      description: "Portal especializado y plataforma e-commerce para aficionados y coleccionistas del sistema de 24 bits Neo Geo AES. Arquitectura híbrida en ASP.NET Core con Blazor Server (Static SSR de alto rendimiento) e islas interactivas en Blazor WebAssembly (incluyendo el minijuego retro METAL JACK ejecutable en cliente). Soporta internacionalización completa en 5 idiomas (ES, EN, FR, DE, IT), monitor de precios de segunda mano con cálculo estadístico de percentiles (p25, mediana, p75) y galería colaborativa de verificación de autenticidad de cartuchos y placas con pre-moderación.",
+      badge: "Live in Production · Retro Hub",
+      tagline: "E-commerce, historic catalog & market valuation monitor for SNK Neo Geo AES collectors",
+      description: "Specialized portal and e-commerce platform for 24-bit SNK Neo Geo AES enthusiasts and collectors. Built on a hybrid ASP.NET Core architecture combining high-performance Blazor Server Static SSR with interactive Blazor WebAssembly islands (including the client-side retro minigame METAL JACK). Features full 5-language localization (EN, ES, FR, DE, IT), a second-hand price monitor with percentile-based valuations (p25, median, p75), and a community authenticity gallery for boards and cartridges with pre-moderation workflows.",
       technologies: ["ASP.NET Core 10", "Blazor SSR & WASM", "C#", "FluentMigrator", "Tailwind CSS", "ImageSharp", "Auth0", "Azure Blob Storage", "Azure App Service", "SQLite"],
       highlights: [
-        "Internacionalización nativa en 5 idiomas (ES, EN, FR, DE, IT) con slugs de URL localizados y SEO hreflang dinámico",
-        "Arquitectura híbrida Blazor Server Static SSR para máxima velocidad de renderizado con islas WebAssembly cliente",
-        "Monitor de mercado retro con algoritmo estadístico de mediana y percentiles (p25/p75) sobre ventana móvil de 12 meses",
-        "Galería de autenticidad comunitaria con flujo de pre-moderación, subida de fotos a Azure Blob y procesado WebP con ImageSharp",
-        "Diseño inmersivo estilo arcade CRT con estética retro optimizada al milímetro en Tailwind CSS"
+        "Native 5-language internationalization (EN, ES, FR, DE, IT) with localized URL slugs and dynamic SEO hreflang tags",
+        "Hybrid Blazor architecture: Blazor Server Static SSR for instant page loads paired with WebAssembly client islands",
+        "Retro market valuation engine computing median and percentile (p25/p75) pricing over a 12-month rolling window",
+        "Crowd-sourced authenticity gallery featuring pre-moderation, Azure Blob Storage uploads, and ImageSharp WebP processing",
+        "Immersive arcade CRT aesthetic with pixel-perfect scanlines and retro styling built with Tailwind CSS"
       ],
       link: "https://www.neogeoaesplus.com",
       date: "2024-05",
       screenshots: [
         {
           url: "/projects/neogeo-catalog.png",
-          title: "Catálogo Clásico SNK",
-          caption: "Catálogo histórico completo de cartuchos domésticos 1990-2004 con indicadores de rareza y ficha técnica."
+          title: "Classic SNK Catalog",
+          caption: "Comprehensive historic archive of domestic cartridges (1990–2004) with rarity indicators and specs."
         },
         {
           url: "/projects/neogeo-games.png",
-          title: "Catálogo de Reediciones AES+",
-          caption: "Explorador de juegos con filtros por género, fichas técnicas y opciones de reserva/compra."
+          title: "AES+ Reissue Catalog",
+          caption: "Game explorer with genre filters, technical sheets, and pre-order/purchase links."
         },
         {
           url: "/projects/neogeo-home.png",
-          title: "Portada & Cuenta Atrás",
-          caption: "Hero retroarcade con reloj de lanzamiento retro y banner de ofertas dinámicas sincronizado con CholloLocura."
+          title: "Home & Countdown",
+          caption: "Arcade-styled hero banner featuring a live launch countdown and dynamic deals synced with CholloLocura."
         }
       ]
     },
@@ -598,34 +598,34 @@ export const cvData: CVData = {
       id: "proj-personal-evercadeplus",
       name: "Evercade+",
       category: "personal",
-      badge: "En Producción · Hardware Tracker",
-      tagline: "Catálogo exhaustivo y rastreador horario de precios para todo el ecosistema Evercade",
-      description: "Plataforma de seguimiento y catálogo integral de todo el universo Evercade (consolas portátiles como EXP/Super Pocket, sobremesa VS y más de 80 cartuchos oficiales). Modelo de datos relacional de tres niveles (Consola -> Cartucho -> Juego) con navegación bidireccional. Incorpora un motor en segundo plano (PriceSyncService) que sincroniza de forma horaria los precios de tiendas líderes (Amazon, Wakkap) generando históricos y snapshots, sistema colaborativo de reporte de rotura de stock y soporte multilingüe en 5 idiomas.",
+      badge: "Live in Production · Hardware Tracker",
+      tagline: "Comprehensive catalog & automated hourly price tracker for the Evercade retro gaming ecosystem",
+      description: "All-in-one tracking platform and catalog for the Evercade universe (handhelds like EXP/Super Pocket, home consoles like VS, and 80+ official cartridges). Built on a 3-tier relational model (Console -> Cartridge -> Game) with bidirectional navigation. Includes a background worker (PriceSyncService) that syncs prices hourly from leading retailers (Amazon, Wakkap) generating snapshots and historical trends, crowdsourced out-of-stock reporting, and 5-language internationalization.",
       technologies: ["ASP.NET Core 10", "Blazor Server SSR", "C#", "FluentMigrator", "Tailwind CSS", "Auth0", ".NET BackgroundServices", "REST API", "Azure App Service", "SQLite"],
       highlights: [
-        "Modelo relacional de 3 niveles estructurado (Hardware -> Cartuchos -> Juegos) con más de 80 cartuchos y cientos de títulos",
-        "Worker en segundo plano (PriceSyncService) con sincronización horaria de precios y generación de snapshots históricos",
-        "Integración bidireccional con API de CholloLocura para validación y caducidad automática de ofertas",
-        "Reporte colaborativo de falta de stock con protección por rate-limiting y retroalimentación en cola de verificación",
-        "Localización completa en 5 idiomas (ES, EN, FR, DE, IT) con páginas ultrarrápidas renderizadas vía Static SSR"
+        "Structured 3-tier relational model (Hardware -> Cartridges -> Games) indexing 80+ cartridges and hundreds of games",
+        "Background worker (PriceSyncService) running hourly price synchronizations and recording historical price movements",
+        "Bidirectional integration with CholloLocura API for automated deal expiry and availability verification queues",
+        "Crowdsourced stock availability reports protected by rate limiting with automated partner sync",
+        "Full 5-language internationalization (EN, ES, FR, DE, IT) delivered via lightning-fast Blazor Static SSR"
       ],
       link: "https://evercadeplus.com",
       date: "2025-01",
       screenshots: [
         {
           url: "/projects/evercade-cartridges.png",
-          title: "Colección Completa de Cartuchos",
-          caption: "Parrilla visual con más de 80 cartuchos clasificados por Consola, Arcade y Home Computer con cotización en vivo."
+          title: "Complete Cartridge Collection",
+          caption: "Visual grid featuring 80+ cartridges categorized by Console, Arcade, and Home Computer with live pricing."
         },
         {
           url: "/projects/evercade-consoles.png",
-          title: "Hardware & Consolas",
-          caption: "Catálogo de consolas portátiles y sobremesa con stock en tiempo real y comparativa entre tiendas."
+          title: "Hardware & Consoles",
+          caption: "Handheld and home console catalog with real-time stock status and multi-retailer price comparison."
         },
         {
           url: "/projects/evercade-home.png",
-          title: "Portada Oficial",
-          caption: "Diseño adaptativo con acceso rápido a las colecciones, buscador global y ofertas destacadas."
+          title: "Official Home",
+          caption: "Responsive landing page with quick collection shortcuts, global search, and featured deals."
         }
       ]
     },
