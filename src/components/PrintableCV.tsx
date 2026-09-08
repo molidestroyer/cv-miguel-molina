@@ -152,16 +152,26 @@ export default function PrintableCV({ data }: PrintableCVProps) {
 
       {/* Projects */}
       <section className="mb-4">
-        <SectionTitle title="Projects" />
-        <div className="space-y-2">
+        <SectionTitle title="Projects &amp; Flagship Applications" />
+        <div className="space-y-2.5">
           {projects.map((project) => (
             <article key={project.id} className="print-avoid-break">
               <div className="flex items-baseline justify-between gap-3">
-                <h3 className="text-[9.5pt] font-semibold text-slate-900">{project.name}</h3>
+                <h3 className="text-[9.5pt] font-semibold text-slate-900">
+                  {project.name}
+                  {project.category === 'personal' && (
+                    <span className="ml-2 text-[7.5pt] font-medium text-emerald-800 bg-emerald-50 border border-emerald-300 rounded px-1.5 py-0.5">
+                      Personal App · Live
+                    </span>
+                  )}
+                </h3>
                 <span className="shrink-0 text-[8pt] font-medium text-slate-500 whitespace-nowrap">
                   {project.date}
                 </span>
               </div>
+              {project.tagline && (
+                <p className="text-[8.5pt] italic text-slate-600 mb-0.5">{project.tagline}</p>
+              )}
               <p className="text-slate-700">{project.description}</p>
               {project.highlights.length > 0 && (
                 <ul className="mt-0.5 ml-4 list-disc space-y-0.5 text-slate-700 marker:text-[#0369a1]">
@@ -175,7 +185,13 @@ export default function PrintableCV({ data }: PrintableCVProps) {
                   <span className="font-semibold text-slate-700">Tech:</span> {project.technologies.join(' · ')}
                 </p>
               )}
-              {project.link && <p className="text-[8pt] text-[#0369a1]">{project.link}</p>}
+              {project.link && (
+                <p className="text-[8pt] text-[#0369a1]">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    {project.link}
+                  </a>
+                </p>
+              )}
             </article>
           ))}
         </div>

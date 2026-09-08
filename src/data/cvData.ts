@@ -530,8 +530,109 @@ export const cvData: CVData = {
   ],
   projects: [
     {
+      id: "proj-personal-chollolocura",
+      name: "CholloLocura.es",
+      category: "personal",
+      badge: "Flagship · En Producción",
+      tagline: "Ecosistema automatizado de inteligencia de precios, agregador de ofertas y comunidad (+50K usuarios)",
+      description: "Plataforma de alta escala para detección, comparación y difusión automática de ofertas y chollos en tiempo real. Integra arquitectura de microservicios con .NET Aspire, agentes autónomos de Inteligencia Artificial para curación de contenido y generación de copys/imágenes, scrapers multitienda (Amazon PA-API, AWIN, feeds CSV), bot interactivo de Telegram con canales temáticos, y panel analítico avanzado de clics y conversiones.",
+      technologies: [".NET Aspire", ".NET 10", "C#", "Blazor SSR", "Entity Framework Core", "Python (Flask & Telethon)", "AI Agents", "Azure App Service Linux", "Azure Functions", "SQL Server", "Tailwind CSS"],
+      highlights: [
+        "Orquestación de microservicios centralizada con .NET Aspire (Admin Web, User Web, API, AI Dashboard y Workers)",
+        "Canal de difusión masiva y bot Telegram conectado a comunidad activa de más de 50.000 usuarios",
+        "Pipeline inteligente de precios con detección de mínimos históricos y sincronización continua de feeds de afiliados",
+        "Generación automatizada de creatividades y fichas de producto mediante agentes de IA",
+        "Módulo de analítica de tráfico de alta precisión con clasificación de bots/dispositivos y atribución de conversiones"
+      ],
+      link: "https://www.chollolocura.es",
+      date: "2023-01",
+      screenshots: [
+        {
+          url: "/projects/chollolocura-home.png",
+          title: "Portal Principal & Buscador",
+          caption: "Buscador en tiempo real, categorías de chollos destacados y barra de sincronización con canales de Telegram."
+        },
+        {
+          url: "/projects/chollolocura-links.png",
+          title: "Hub de Enlaces & Chollos Top",
+          caption: "Página 'Link in bio' optimizada con enlaces directos, imprescindibles del día y analítica de clicks."
+        }
+      ]
+    },
+    {
+      id: "proj-personal-neogeoaesplus",
+      name: "NeoGeo AES+",
+      category: "personal",
+      badge: "En Producción · Retro Hub",
+      tagline: "E-commerce, catálogo histórico y monitor de cotizaciones para coleccionistas de SNK Neo Geo AES",
+      description: "Portal especializado y plataforma e-commerce para aficionados y coleccionistas del sistema de 24 bits Neo Geo AES. Arquitectura híbrida en ASP.NET Core con Blazor Server (Static SSR de alto rendimiento) e islas interactivas en Blazor WebAssembly (incluyendo el minijuego retro METAL JACK ejecutable en cliente). Soporta internacionalización completa en 5 idiomas (ES, EN, FR, DE, IT), monitor de precios de segunda mano con cálculo estadístico de percentiles (p25, mediana, p75) y galería colaborativa de verificación de autenticidad de cartuchos y placas con pre-moderación.",
+      technologies: ["ASP.NET Core 10", "Blazor SSR & WASM", "C#", "FluentMigrator", "Tailwind CSS", "ImageSharp", "Auth0", "Azure Blob Storage", "Azure App Service", "SQLite"],
+      highlights: [
+        "Internacionalización nativa en 5 idiomas (ES, EN, FR, DE, IT) con slugs de URL localizados y SEO hreflang dinámico",
+        "Arquitectura híbrida Blazor Server Static SSR para máxima velocidad de renderizado con islas WebAssembly cliente",
+        "Monitor de mercado retro con algoritmo estadístico de mediana y percentiles (p25/p75) sobre ventana móvil de 12 meses",
+        "Galería de autenticidad comunitaria con flujo de pre-moderación, subida de fotos a Azure Blob y procesado WebP con ImageSharp",
+        "Diseño inmersivo estilo arcade CRT con estética retro optimizada al milímetro en Tailwind CSS"
+      ],
+      link: "https://www.neogeoaesplus.com",
+      date: "2024-05",
+      screenshots: [
+        {
+          url: "/projects/neogeo-catalog.png",
+          title: "Catálogo Clásico SNK",
+          caption: "Catálogo histórico completo de cartuchos domésticos 1990-2004 con indicadores de rareza y ficha técnica."
+        },
+        {
+          url: "/projects/neogeo-games.png",
+          title: "Catálogo de Reediciones AES+",
+          caption: "Explorador de juegos con filtros por género, fichas técnicas y opciones de reserva/compra."
+        },
+        {
+          url: "/projects/neogeo-home.png",
+          title: "Portada & Cuenta Atrás",
+          caption: "Hero retroarcade con reloj de lanzamiento retro y banner de ofertas dinámicas sincronizado con CholloLocura."
+        }
+      ]
+    },
+    {
+      id: "proj-personal-evercadeplus",
+      name: "Evercade+",
+      category: "personal",
+      badge: "En Producción · Hardware Tracker",
+      tagline: "Catálogo exhaustivo y rastreador horario de precios para todo el ecosistema Evercade",
+      description: "Plataforma de seguimiento y catálogo integral de todo el universo Evercade (consolas portátiles como EXP/Super Pocket, sobremesa VS y más de 80 cartuchos oficiales). Modelo de datos relacional de tres niveles (Consola -> Cartucho -> Juego) con navegación bidireccional. Incorpora un motor en segundo plano (PriceSyncService) que sincroniza de forma horaria los precios de tiendas líderes (Amazon, Wakkap) generando históricos y snapshots, sistema colaborativo de reporte de rotura de stock y soporte multilingüe en 5 idiomas.",
+      technologies: ["ASP.NET Core 10", "Blazor Server SSR", "C#", "FluentMigrator", "Tailwind CSS", "Auth0", ".NET BackgroundServices", "REST API", "Azure App Service", "SQLite"],
+      highlights: [
+        "Modelo relacional de 3 niveles estructurado (Hardware -> Cartuchos -> Juegos) con más de 80 cartuchos y cientos de títulos",
+        "Worker en segundo plano (PriceSyncService) con sincronización horaria de precios y generación de snapshots históricos",
+        "Integración bidireccional con API de CholloLocura para validación y caducidad automática de ofertas",
+        "Reporte colaborativo de falta de stock con protección por rate-limiting y retroalimentación en cola de verificación",
+        "Localización completa en 5 idiomas (ES, EN, FR, DE, IT) con páginas ultrarrápidas renderizadas vía Static SSR"
+      ],
+      link: "https://evercadeplus.com",
+      date: "2025-01",
+      screenshots: [
+        {
+          url: "/projects/evercade-cartridges.png",
+          title: "Colección Completa de Cartuchos",
+          caption: "Parrilla visual con más de 80 cartuchos clasificados por Consola, Arcade y Home Computer con cotización en vivo."
+        },
+        {
+          url: "/projects/evercade-consoles.png",
+          title: "Hardware & Consolas",
+          caption: "Catálogo de consolas portátiles y sobremesa con stock en tiempo real y comparativa entre tiendas."
+        },
+        {
+          url: "/projects/evercade-home.png",
+          title: "Portada Oficial",
+          caption: "Diseño adaptativo con acceso rápido a las colecciones, buscador global y ofertas destacadas."
+        }
+      ]
+    },
+    {
       id: "proj-1",
       name: "Sage Cloud Migration & Stabilization",
+      category: "enterprise",
       description: "Complete AWS cloud migration of critical accounting applications from on-premise deployment, including IIS-based apps, microservices, and Windows services. Stabilized application after 3-week downtime.",
       technologies: ["C#", ".NET Framework", "AWS", "IIS", "Microservices", "Windows Services", "CI/CD", "New Relic"],
       highlights: [
@@ -546,6 +647,7 @@ export const cvData: CVData = {
     {
       id: "proj-2",
       name: "Central Identity Management (CIM)",
+      category: "enterprise",
       description: "Healthcare identity management system with OAuth/OpenID authentication using .NET Core, Docker, RabbitMQ, MongoDB, and Angular 6.",
       technologies: ["Angular 6", "C#", ".NET Core 2.2", "MongoDB", "IdentityServer", "Docker", "RabbitMQ", "OAuth", "OpenID"],
       highlights: [
@@ -559,6 +661,7 @@ export const cvData: CVData = {
     {
       id: "proj-3",
       name: "HIV Monitor Tracking System",
+      category: "enterprise",
       description: "HIV tracking system for South Africa with Roche Diagnostics. Xamarin mobile app for Android/iOS with microservices backend, barcode scanning, and offline capabilities.",
       technologies: ["Xamarin Forms", ".NET Core 2.1", "IdentityServer", "Azure", "Android", "iOS", "AppCenter"],
       highlights: [
@@ -573,6 +676,7 @@ export const cvData: CVData = {
     {
       id: "proj-4",
       name: "Smart Water Energy Intelligence Software",
+      category: "enterprise",
       description: "Full-stack energy intelligence system for USA water company with real-time monitoring, detailed reporting, and actionable data dashboards.",
       technologies: ["Angular 4", "Node.js", "MongoDB", "Express.js", "Auth0", "D3.js", "Bootstrap"],
       highlights: [
@@ -586,6 +690,7 @@ export const cvData: CVData = {
     {
       id: "proj-5",
       name: "NFC Document Authentication System",
+      category: "enterprise",
       description: "Document authentication solution using NFC seals with blockchain integration, turning offline documents into verified digital instances.",
       technologies: ["Angular 4", "C#", "NFC", "MIFARE DESFire", "Bootstrap 4", "PrimeNG", "Blockchain"],
       highlights: [
@@ -599,6 +704,7 @@ export const cvData: CVData = {
     {
       id: "proj-6",
       name: "Electronic Keys Security Suite",
+      category: "enterprise",
       description: "Internal security tool suite with 4 websites for visit management, contractor management, employee management, and self-service tools. Includes passport reading integration.",
       technologies: ["ASP.NET MVC", "TypeScript", "KendoUI", "SignalR", "KnockoutJS", "HTML5", "SQL Server"],
       highlights: [
@@ -612,6 +718,7 @@ export const cvData: CVData = {
     {
       id: "proj-7",
       name: "Exchange Meeting Scheduler with Office Integration",
+      category: "enterprise",
       description: "Meeting scheduling system with Exchange synchronization, Office-to-PDF conversion, Outlook add-in, and iPad app integration.",
       technologies: ["ASP.NET MVC", "Web API", "Exchange Web Services", "Windows Services", "Outlook Add-Ins", "Office Interop", "Quartz.Net"],
       highlights: [
@@ -625,6 +732,7 @@ export const cvData: CVData = {
     {
       id: "proj-8",
       name: "LabCore UI Migration",
+      category: "enterprise",
       description: "Migration of pharmaceutical LabCore UserMessage and Notification modules from legacy system to Angular and .NET Core microservices.",
       technologies: ["Angular 9", ".NET Core 3", "SignalR", "Microservices", "RxJS", "Azure DevOps", "Jasmine", "Karma"],
       highlights: [

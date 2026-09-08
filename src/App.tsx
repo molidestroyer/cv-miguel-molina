@@ -42,7 +42,9 @@ function App() {
       projects: cvData.projects.filter(proj =>
         proj.name.toLowerCase().includes(query) ||
         proj.description.toLowerCase().includes(query) ||
-        proj.technologies.some(tech => tech.toLowerCase().includes(query))
+        proj.tagline?.toLowerCase().includes(query) ||
+        proj.technologies.some(tech => tech.toLowerCase().includes(query)) ||
+        proj.highlights.some(h => h.toLowerCase().includes(query))
       ),
       certifications: cvData.certifications.filter(cert =>
         cert.name.toLowerCase().includes(query) ||

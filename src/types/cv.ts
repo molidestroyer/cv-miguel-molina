@@ -37,14 +37,24 @@ export interface Skill {
   level: number; // 1-100
 }
 
+export interface ProjectScreenshot {
+  url: string;
+  title: string;
+  caption?: string;
+}
+
 export interface Project {
   id: string;
   name: string;
+  category?: 'personal' | 'enterprise';
+  badge?: string;
+  tagline?: string;
   description: string;
   technologies: string[];
   highlights: string[];
   link?: string;
   date: string;
+  screenshots?: ProjectScreenshot[];
 }
 
 export interface Certification {
