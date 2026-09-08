@@ -61,20 +61,22 @@ export default function SkillsSection({ skills, language = 'en' }: SkillsSection
           <h3 className="text-xl font-display font-bold text-white mb-6 text-center">
             {language === 'es' ? 'Resumen de Habilidades Principales' : 'Top Skills Overview'}
           </h3>
-          <div className="glass-card p-6">
+          <div className="glass-card p-4 sm:p-6">
             <div className="space-y-3">
               {chartData.map((skill, i) => (
-                <div key={skill.name} className="flex items-center gap-4">
-                  <div className="w-32 text-sm font-medium text-slate-300 text-right flex-shrink-0">{skill.name}</div>
-                  <div className="flex-1 bg-white/5 rounded-full h-7 relative overflow-hidden border border-white/5">
+                <div key={skill.name} className="flex items-center gap-2 sm:gap-4">
+                  <div className="w-24 sm:w-32 text-xs sm:text-sm font-medium text-slate-300 text-right shrink-0 truncate" title={skill.name}>
+                    {skill.name}
+                  </div>
+                  <div className="flex-1 bg-white/5 rounded-full h-6 sm:h-7 relative overflow-hidden border border-white/5">
                     <motion.div
-                      className="h-full rounded-full flex items-center justify-end pr-3 bg-gradient-to-r from-primary-500 to-accent-500"
+                      className="h-full rounded-full flex items-center justify-end pr-2.5 bg-gradient-to-r from-primary-500 to-accent-500"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.9, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <span className="text-white text-xs font-semibold whitespace-nowrap">{skill.level}%</span>
+                      <span className="text-white text-[10px] sm:text-xs font-semibold whitespace-nowrap">{skill.level}%</span>
                     </motion.div>
                   </div>
                 </div>

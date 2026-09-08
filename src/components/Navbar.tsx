@@ -161,8 +161,9 @@ export default function Navbar({ onSearch, language, onLanguageChange }: NavbarP
               <button
                 type="button"
                 onClick={() => onLanguageChange('en')}
-                className={`px-2 py-1 rounded-md transition-all ${
-                  language === 'en' ? 'bg-primary-500 text-white font-bold' : 'text-slate-400'
+                aria-label="Switch to English"
+                className={`px-2.5 py-1.5 rounded-md transition-all ${
+                  language === 'en' ? 'bg-primary-500 text-white font-bold shadow-sm' : 'text-slate-400 hover:text-white'
                 }`}
               >
                 EN
@@ -170,8 +171,9 @@ export default function Navbar({ onSearch, language, onLanguageChange }: NavbarP
               <button
                 type="button"
                 onClick={() => onLanguageChange('es')}
-                className={`px-2 py-1 rounded-md transition-all ${
-                  language === 'es' ? 'bg-primary-500 text-white font-bold' : 'text-slate-400'
+                aria-label="Cambiar a Español"
+                className={`px-2.5 py-1.5 rounded-md transition-all ${
+                  language === 'es' ? 'bg-primary-500 text-white font-bold shadow-sm' : 'text-slate-400 hover:text-white'
                 }`}
               >
                 ES
@@ -179,33 +181,36 @@ export default function Navbar({ onSearch, language, onLanguageChange }: NavbarP
             </div>
 
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-slate-300 hover:bg-white/10"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              className="p-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 active:scale-95 transition-all border border-white/10"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="md:hidden overflow-hidden"
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden overflow-hidden border-t border-white/10 bg-slate-950/95 backdrop-blur-2xl -mx-4 px-4 sm:-mx-6 sm:px-6 shadow-2xl"
             >
-              <div className="pb-4">
-                <div className="mb-3 relative">
-                  <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+              <div className="py-4 space-y-3">
+                <div className="relative">
+                  <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
                   <input
                     type="text"
                     placeholder={t.searchPlaceholder}
                     value={searchQuery}
                     onChange={handleSearchChange}
-                    className="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500/60"
+                    className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500/60 text-sm"
                   />
                 </div>
                 <div className="space-y-1">
@@ -215,22 +220,26 @@ export default function Navbar({ onSearch, language, onLanguageChange }: NavbarP
                     return (
                       <button
                         key={item.id}
+                        type="button"
                         onClick={() => handleNavClick(item.id)}
-                        className={`flex items-center gap-2 w-full px-4 py-3 rounded-lg transition-colors ${
-                          isActive ? 'bg-white/10 text-white' : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                        className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-left text-sm font-medium transition-all ${
+                          isActive
+                            ? 'bg-primary-500/15 text-primary-300 border border-primary-500/30'
+                            : 'text-slate-300 hover:bg-white/5 hover:text-white'
                         }`}
                       >
-                        <Icon size={18} />
-                        <span className="font-medium">{item.label}</span>
+                        <Icon size={18} className={isActive ? 'text-primary-400' : 'text-slate-400'} />
+                        <span>{item.label}</span>
                       </button>
                     );
                   })}
                   <button
+                    type="button"
                     onClick={() => {
                       setIsOpen(false);
                       downloadCvPdf(language);
                     }}
-                    className="flex items-center gap-2 w-full px-4 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500"
+                    className="flex items-center justify-center gap-2 w-full mt-2 px-4 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500 shadow-glow active:scale-[0.98] transition-all"
                   >
                     <Download size={18} />
                     <span>{language === 'es' ? 'Descargar PDF' : 'Download PDF'}</span>

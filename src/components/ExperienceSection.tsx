@@ -74,7 +74,7 @@ export default function ExperienceSection({ experiences, language = 'en' }: Expe
                 key={exp.id}
                 initial={{ opacity: 0, x: -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
+                viewport={{ once: true, margin: '-20px' }}
                 transition={{ duration: 0.5, delay: Math.min(index, 4) * 0.05, ease: [0.22, 1, 0.36, 1] }}
                 className="relative"
               >
@@ -84,35 +84,35 @@ export default function ExperienceSection({ experiences, language = 'en' }: Expe
                 </span>
 
                 {/* Content Card */}
-                <div className="glass-card p-6 hover:border-primary-400/40 hover:shadow-glow transition-all duration-300">
+                <div className="glass-card p-4 sm:p-6 hover:border-primary-400/40 hover:shadow-glow transition-all duration-300">
                   <div className="mb-4">
                     <div className="flex items-start justify-between gap-3 mb-2">
-                      <h3 className="text-xl font-display font-bold text-white">{exp.position}</h3>
+                      <h3 className="text-lg sm:text-xl font-display font-bold text-white leading-snug">{exp.position}</h3>
                       <CompanyBadge company={exp.company} />
                     </div>
                     <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <p className="text-base font-semibold gradient-text">{exp.company}</p>
+                      <p className="text-sm sm:text-base font-semibold gradient-text">{exp.company}</p>
                       {exp.current && (
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">
                           {t.present}
                         </span>
                       )}
                     </div>
-                    <div className="flex flex-wrap gap-4 text-sm text-slate-400">
+                    <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs sm:text-sm text-slate-400">
                       <div className="flex items-center gap-1.5">
-                        <Calendar size={14} />
+                        <Calendar size={13} className="text-primary-400 shrink-0" />
                         <span>
                           {formatDate(exp.startDate, language)} - {exp.current ? t.present : formatDate(exp.endDate, language)}
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <MapPin size={14} />
+                        <MapPin size={13} className="text-primary-400 shrink-0" />
                         <span>{exp.location}</span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-slate-300 mb-4">{exp.description}</p>
+                  <p className="text-slate-300 text-sm sm:text-base mb-4 leading-relaxed">{exp.description}</p>
 
                   {exp.achievements.length > 0 && (
                     <div className="mb-4">

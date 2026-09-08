@@ -32,18 +32,18 @@ export default function EducationSection({ education, language = 'en' }: Educati
           <p className="text-lg text-slate-400">{t.subtitle}</p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
           {education.map((edu, i) => (
             <Reveal key={edu.id} delay={Math.min(i, 5) * 0.06}>
-              <div className="glass-card p-6 h-full hover:border-primary-400/40 hover:shadow-glow transition-all duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary-500/10 text-primary-300 flex-shrink-0">
-                    <GraduationCap size={24} />
+              <div className="glass-card p-4 sm:p-6 h-full hover:border-primary-400/40 hover:shadow-glow transition-all duration-300">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="p-2.5 sm:p-3 rounded-lg bg-primary-500/10 text-primary-300 shrink-0">
+                    <GraduationCap size={20} className="sm:w-6 sm:h-6" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-display font-bold text-white mb-1">{edu.degree}</h3>
-                    <p className="text-base gradient-text font-semibold mb-3">{edu.field}</p>
-                    <p className="text-slate-300 font-medium mb-3">{edu.institution}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-display font-bold text-white mb-1 leading-snug">{edu.degree}</h3>
+                    <p className="text-sm sm:text-base gradient-text font-semibold mb-2">{edu.field}</p>
+                    <p className="text-slate-300 text-sm font-medium mb-3">{edu.institution}</p>
                     <div className="flex flex-wrap gap-4 text-sm text-slate-400 mb-3">
                       <div className="flex items-center gap-1.5">
                         <Calendar size={14} />

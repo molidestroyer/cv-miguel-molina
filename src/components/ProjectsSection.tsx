@@ -117,28 +117,28 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
     activeLightboxProject?.screenshots?.[lightbox?.imageIndex ?? 0];
 
   return (
-    <section id="projects" className="relative py-24 bg-ink-950">
+    <section id="projects" className="relative py-20 sm:py-24 bg-ink-950 overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-accent-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary-500/5 rounded-full blur-3xl pointer-events-none max-w-full" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-accent-500/5 rounded-full blur-3xl pointer-events-none max-w-full" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="text-center mb-12">
+        <Reveal className="text-center mb-10 sm:mb-12">
           <span className="section-eyebrow flex items-center justify-center gap-2">
             <Sparkles size={14} className="text-primary-400" /> {t.eyebrow}
           </span>
           <h2 className="section-title">
             {t.title} <span className="gradient-text">{t.titleHighlight}</span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto px-2">
             {t.subtitle}
           </p>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-6 sm:mt-8">
             <button
               onClick={() => setActiveFilter('all')}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                 activeFilter === 'all'
                   ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
                   : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'
@@ -148,18 +148,18 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
             </button>
             <button
               onClick={() => setActiveFilter('personal')}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 ${
                 activeFilter === 'personal'
                   ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-accent-400'
                   : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'
               }`}
             >
-              <Sparkles size={15} className="text-accent-300" />
+              <Sparkles size={14} className="text-accent-300" />
               {t.filterPersonal} ({personalProjects.length})
             </button>
             <button
               onClick={() => setActiveFilter('enterprise')}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                 activeFilter === 'enterprise'
                   ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25 ring-1 ring-primary-400'
                   : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'
@@ -172,7 +172,7 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
 
         {/* PERSONAL PROJECTS SHOWCASE (Cards with Interactive Gallery) */}
         {(activeFilter === 'all' || activeFilter === 'personal') && personalProjects.length > 0 && (
-          <div className="space-y-12 mb-16">
+          <div className="space-y-10 sm:space-y-12 mb-16">
             {personalProjects.map((project, i) => {
               const activeIndex = getActiveImageIndex(project.id);
               const currentScreenshot = project.screenshots?.[activeIndex];
@@ -180,8 +180,8 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
 
               return (
                 <Reveal key={project.id} delay={i * 0.1}>
-                  <div className="group glass-card p-6 md:p-8 hover:border-primary-400/40 hover:shadow-glow-accent transition-all duration-300 overflow-hidden">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div className="group glass-card p-4 sm:p-6 md:p-8 hover:border-primary-400/40 hover:shadow-glow-accent transition-all duration-300 overflow-hidden">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
                       
                       {/* Left: Gallery & Browser Mockup */}
                       <div className="lg:col-span-7 flex flex-col space-y-3">
@@ -196,13 +196,13 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
                             </div>
                             
                             {/* Domain Pill */}
-                            <div className="flex items-center space-x-1 px-3 py-1 bg-white/5 rounded-md text-[11px] text-slate-400 border border-white/5 font-mono">
-                              <Globe size={11} className="text-primary-400 mr-1" />
-                              <span>{project.link?.replace('https://', '')}</span>
+                            <div className="flex items-center space-x-1 px-2.5 sm:px-3 py-1 bg-white/5 rounded-md text-[11px] text-slate-400 border border-white/5 font-mono max-w-[150px] sm:max-w-none truncate">
+                              <Globe size={11} className="text-primary-400 mr-1 shrink-0" />
+                              <span className="truncate">{project.link?.replace('https://', '')}</span>
                             </div>
 
                             {/* Screenshot Counter */}
-                            <div className="text-[11px] text-slate-500 font-mono">
+                            <div className="text-[11px] text-slate-500 font-mono shrink-0">
                               {activeIndex + 1} / {totalScreenshots}
                             </div>
                           </div>
@@ -399,18 +399,18 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {enterpriseProjects.map((project, i) => (
                 <Reveal key={project.id} delay={Math.min(i, 5) * 0.05}>
-                  <div className="group relative glass-card p-6 h-full hover:border-primary-400/40 hover:shadow-glow-accent transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                  <div className="group relative glass-card p-4 sm:p-6 h-full hover:border-primary-400/40 hover:shadow-glow-accent transition-all duration-300 overflow-hidden flex flex-col justify-between">
                     <div>
                       <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 group-hover:text-primary-300 group-hover:border-primary-400/30 transition-colors">
-                            <FolderGit2 size={20} />
+                        <div className="flex items-center gap-2.5 sm:gap-3">
+                          <div className="p-2 sm:p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 group-hover:text-primary-300 group-hover:border-primary-400/30 transition-colors shrink-0">
+                            <FolderGit2 size={18} className="sm:w-5 sm:h-5" />
                           </div>
-                          <div>
-                            <h3 className="text-base font-display font-bold text-white">
+                          <div className="min-w-0">
+                            <h3 className="text-base font-display font-bold text-white truncate">
                               {project.name}
                             </h3>
                             <p className="text-xs text-slate-500">{formatDate(project.date, language)}</p>
@@ -421,14 +421,14 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 text-primary-300 hover:bg-white/10 rounded-lg transition-colors"
+                            className="p-2 text-primary-300 hover:bg-white/10 rounded-lg transition-colors shrink-0"
                           >
                             <ExternalLink size={16} />
                           </a>
                         )}
                       </div>
 
-                      <p className="text-slate-300 mb-4 text-sm leading-relaxed">
+                      <p className="text-slate-300 mb-4 text-xs sm:text-sm leading-relaxed">
                         {project.description}
                       </p>
 
@@ -470,7 +470,7 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
       {/* LIGHTBOX MODAL */}
       {lightbox && activeLightboxProject && activeLightboxScreenshot && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/90 backdrop-blur-md animate-fadeIn"
           onClick={() => setLightbox(null)}
         >
           <div
@@ -478,20 +478,20 @@ export default function ProjectsSection({ projects, language = 'en' }: ProjectsS
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-slate-950/70">
-              <div className="flex items-center space-x-3">
-                <Globe size={18} className="text-primary-400" />
-                <div>
-                  <h3 className="text-white font-bold text-base leading-tight">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-white/10 bg-slate-950/70">
+              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
+                <Globe size={16} className="text-primary-400 shrink-0 hidden sm:block" />
+                <div className="min-w-0">
+                  <h3 className="text-white font-bold text-sm sm:text-base leading-tight truncate">
                     {activeLightboxProject.name} — {activeLightboxScreenshot.title}
                   </h3>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-400 truncate">
                     {activeLightboxScreenshot.caption}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-1 sm:space-x-2 shrink-0">
                 {activeLightboxProject.link && (
                   <a
                     href={activeLightboxProject.link}

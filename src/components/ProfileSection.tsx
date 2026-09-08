@@ -62,7 +62,7 @@ export default function ProfileSection({ name, title, summary, contact, stats, l
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl md:text-7xl font-display font-extrabold gradient-text mb-4 tracking-tight"
+            className="text-3xl sm:text-5xl md:text-7xl font-display font-extrabold gradient-text mb-3 sm:mb-4 tracking-tight leading-tight"
           >
             {name}
           </motion.h1>
@@ -70,7 +70,7 @@ export default function ProfileSection({ name, title, summary, contact, stats, l
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="text-xl md:text-2xl text-slate-200 font-semibold mb-6"
+            className="text-lg sm:text-xl md:text-2xl text-slate-200 font-semibold mb-4 sm:mb-6"
           >
             {title}
           </motion.p>
@@ -80,7 +80,7 @@ export default function ProfileSection({ name, title, summary, contact, stats, l
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="text-base md:text-lg text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-slate-400 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2"
           >
             {summary}
           </motion.p>
@@ -90,12 +90,12 @@ export default function ProfileSection({ name, title, summary, contact, stats, l
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10"
+            className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10 max-w-2xl mx-auto"
           >
             {stats.map((stat) => (
-              <div key={stat.label} className="glass-card px-6 py-4 min-w-[120px]">
-                <div className="text-2xl md:text-3xl font-display font-bold gradient-text">{stat.value}</div>
-                <div className="text-xs text-slate-400 uppercase tracking-wide mt-1">{stat.label}</div>
+              <div key={stat.label} className="glass-card px-4 py-3 sm:px-6 sm:py-4 text-center">
+                <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold gradient-text">{stat.value}</div>
+                <div className="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -105,25 +105,25 @@ export default function ProfileSection({ name, title, summary, contact, stats, l
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-wrap justify-center gap-6 mb-8"
+            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-6 mb-8 text-center"
           >
             <a
               href={`mailto:${contact.email}`}
-              className="flex items-center gap-2 text-slate-300 hover:text-primary-300 transition-colors"
+              className="flex items-center gap-2 text-slate-300 hover:text-primary-300 transition-colors py-1"
             >
-              <Mail size={18} />
-              <span className="text-sm">{contact.email}</span>
+              <Mail size={16} className="text-primary-400 shrink-0" />
+              <span className="text-xs sm:text-sm break-all">{contact.email}</span>
             </a>
             <a
               href={`tel:${contact.phone}`}
-              className="flex items-center gap-2 text-slate-300 hover:text-primary-300 transition-colors"
+              className="flex items-center gap-2 text-slate-300 hover:text-primary-300 transition-colors py-1"
             >
-              <Phone size={18} />
-              <span className="text-sm">{contact.phone}</span>
+              <Phone size={16} className="text-primary-400 shrink-0" />
+              <span className="text-xs sm:text-sm">{contact.phone}</span>
             </a>
-            <div className="flex items-center gap-2 text-slate-300">
-              <MapPin size={18} />
-              <span className="text-sm">{contact.location}</span>
+            <div className="flex items-center gap-2 text-slate-300 py-1">
+              <MapPin size={16} className="text-primary-400 shrink-0" />
+              <span className="text-xs sm:text-sm">{contact.location}</span>
             </div>
           </motion.div>
 
@@ -136,7 +136,7 @@ export default function ProfileSection({ name, title, summary, contact, stats, l
           >
             <button
               onClick={() => downloadCvPdf(language)}
-              className="group flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 shadow-glow hover:shadow-glow-accent transition-all"
+              className="group flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 rounded-full font-semibold text-white bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-400 hover:to-accent-400 shadow-glow hover:shadow-glow-accent transition-all active:scale-95"
             >
               <Download size={18} className="transition-transform group-hover:translate-y-0.5" />
               <span>{t.downloadPdf}</span>

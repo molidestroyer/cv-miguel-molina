@@ -38,14 +38,14 @@ export default function CertificationsSection({ certifications, languages, langu
           <h3 className="text-xl font-display font-bold text-white mb-6">
             {language === 'es' ? 'Certificaciones Profesionales' : 'Professional Certifications'}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {certifications.map((cert, i) => (
               <Reveal key={cert.id} delay={Math.min(i, 6) * 0.05}>
-                <div className="glass-card p-6 h-full hover:border-primary-400/40 hover:shadow-glow transition-all duration-300 flex flex-col justify-between">
+                <div className="glass-card p-4 sm:p-6 h-full hover:border-primary-400/40 hover:shadow-glow transition-all duration-300 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-primary-500 to-accent-600 shadow-glow">
-                        <Award className="text-white" size={22} />
+                    <div className="flex items-start justify-between mb-3 sm:mb-4">
+                      <div className="p-2.5 sm:p-3 rounded-lg bg-gradient-to-br from-primary-500 to-accent-600 shadow-glow">
+                        <Award className="text-white" size={20} />
                       </div>
                       {cert.link && (
                         <a
@@ -55,12 +55,12 @@ export default function CertificationsSection({ certifications, languages, langu
                           className="p-2 text-primary-300 hover:bg-white/10 rounded-lg transition-colors"
                           title={t.verifyCredential}
                         >
-                          <ExternalLink size={18} />
+                          <ExternalLink size={16} />
                         </a>
                       )}
                     </div>
-                    <h4 className="font-bold text-white mb-2">{cert.name}</h4>
-                    <p className="text-sm text-slate-300 mb-2">{cert.issuer}</p>
+                    <h4 className="font-bold text-white text-base mb-1.5 leading-snug">{cert.name}</h4>
+                    <p className="text-xs sm:text-sm text-slate-300 mb-2">{cert.issuer}</p>
                   </div>
                   <p className="text-xs text-slate-500 pt-3 border-t border-white/5">
                     {formatDate(cert.date, language)}
