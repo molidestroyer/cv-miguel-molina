@@ -52,11 +52,23 @@ export default function Navbar({ onSearch, language, onLanguageChange }: NavbarP
   }, []);
 
   const handleNavClick = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsOpen(false);
-    }
+    setIsOpen(false);
+
+    // Give the mobile dropdown a moment to begin closing before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const navHeight = 64; // Fixed navbar height
+        const rect = element.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetY = Math.max(0, rect.top + scrollTop - navHeight);
+
+        window.scrollTo({
+          top: targetY,
+          behavior: 'smooth',
+        });
+      }
+    }, 100);
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
